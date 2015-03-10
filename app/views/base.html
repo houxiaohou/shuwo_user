@@ -1,0 +1,17 @@
+<div ui-view ng-class="{'padding-footer': page.hasFooter()}"></div>
+<div id="footer" class="footer container" ng-show="page.hasFooter();">
+  <div class="row">
+    <div class="col-xs-6">
+      <a ui-sref="shuwo.default" ng-class="{'active': page.getFooterNav() == 'shop'}">
+        <i class="fa fa-shopping-cart fa-fw"></i>
+        <span>选水果</span>
+      </a>
+    </div>
+    <div class="col-xs-6">
+      <a ui-sref="shuwo.order.list" ng-class="{'active': page.getFooterNav() == 'order'}">
+        <i class="fa fa-file-text-o fa-fw"></i>
+        <span>订单</span>
+      </a>
+    </div>
+  </div>
+</div>

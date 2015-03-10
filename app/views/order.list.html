@@ -1,0 +1,65 @@
+<div class="container-fluid order">
+  <div class="global-header order-nav text-center">
+    <span class="title">订单列表</span>
+    <a ui-sref="shuwo.default" class="link home">
+      <i class="fa fa-home"></i>
+    </a>
+  </div>
+  <div class="order-none text-center" ng-show="!loading&&orders.length==0">
+    <img ng-src="{{noneImage}}" alt=""/>
+    <p>还没有订单，快去选水果吧~</p>
+    <button class="btn btn-success" ui-sref="shuwo.default">去选水果</button>
+  </div>
+  <div class="order-list">
+    <ul class="list-group" infinite-scroll="loadMore()" infinite-scroll-disabled="loading" infinite-scroll-distance="2" ng-show="orders.length>0">
+      <li class="list-group-item" ng-repeat="o in orders">
+        <div class="text-small color-grey">
+          <p>订单状态：<span ng-class="{'color-green': o.orderstatus==1, 'color-red': o.orderstatus==0}">{{o.orderstatus | orderStatus}}</span></p>
+          <p>订单编号：{{o.orderid}}</p>
+          <p>订单日期：{{o.createdtime}}</p>
+          <p>店铺名称：{{shops[o.shopid].spn}}</p>
+          <p>店铺电话：<a ng-href="tel:{{shops[o.shopid].phone}}" class="tel">{{shops[o.shopid].phone}}（点击拨打）</a></p>
+          <p>配送时间：{{o.dltime}}</p>
+        </div>
+        <div class="row text-center price">
+          <div class="col-xs-12">
+            <p>订单金额：<span class="color-red"><span ng-if="o.orderstatus==0">约</span>￥{{o.price}}</span><span class="color-grey text-small">（共{{o.productdetail.length}}种水果）</span></p>
+          </div>
+        </div>
+        <div class="panel-group" bs-collapse ng-model="o.open">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+                <p class="color-red" bs-collapse-toggle>
+                  <span ng-if="isNaN(o.open)||o.open===-1">点击查看水果列表 <i class="fa fa-angle-double-down"></i></span>
+                  <span ng-if="o.open==0">点击关闭水果列表 <i class="fa fa-angle-double-up"></i></span>
+                </p>
+            </div>
+            <div class="panel-collapse" bs-collapse-target>
+              <div class="panel-body item-container">
+                <ul class="list-group">
+                  <li class="list-group-item row" ng-repeat="i in o.productdetail">
+                    <div class="col-xs-4 text-center">
+                      <p class="name">{{i.productname}}</p>
+                    </div>
+                    <div class="col-xs-4 text-center">
+                      <p class="color-red" ng-if="i.attribute==1&&o.orderstatus=='0'">{{i.quantity}}个<span class="text-small">（约{{i.quantity*i.unitweight | weight}}）</span></p>
+                      <p class="color-red" ng-if="i.attribute==1&&o.orderstatus=='1'">{{i.quantity}}个<span class="text-small">（{{i.realweight | weight}}）</span></p>
+                      <p class="color-red" ng-if="i.attribute==2">{{i.quantity*250 | weight}}</p>
+                      <p class="color-red" ng-if="i.attribute==3">{{i.quantity}}{{i.unit}}</p>
+                    </div>
+                    <div class="col-xs-4 text-center">
+                      <p class="color-red" ng-if="i.attribute==2||i.attribute==3">￥{{i.realprice}}</p>
+                      <p class="color-red" ng-if="i.attribute==1&&o.orderstatus=='0'">约￥{{i.realprice}}</p>
+                      <p class="color-red" ng-if="i.attribute==1&&o.orderstatus=='1'">￥{{i.realprice}}</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <p class="loading text-center" ng-show="loading"><i class="fa fa-spinner fa-spin"></i></p>
+  </div>
+</div>

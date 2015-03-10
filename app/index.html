@@ -1,0 +1,77 @@
+<!doctype html>
+<html class="no-js" ng-app="shuwoApp" ng-controller="BaseCtrl">
+  <head>
+    <meta charset="utf-8">
+    <title>树窝水果</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-motion/dist/angular-motion.css" />
+    <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/bootstrap.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?type=quick&ak=Nk7qHUGmUpWXZs6GXzIE6FWT&v=1.0"></script>
+  </head>
+  <body>
+    <!-- Add your site or application content here -->
+    <div class="container-fluid">
+      <div ui-view></div>
+    </div>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-strap/dist/modules/collapse.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/base.js"></script>
+        <script src="scripts/controllers/default.js"></script>
+        <script src="scripts/services/page.js"></script>
+        <script src="scripts/services/location.js"></script>
+        <script src="scripts/services/storage.js"></script>
+        <script src="scripts/controllers/location.js"></script>
+        <script src="scripts/controllers/shop.js"></script>
+        <script src="scripts/services/cart.js"></script>
+        <script src="scripts/services/shop.js"></script>
+        <script src="scripts/services/product.js"></script>
+        <script src="scripts/services/constants.js"></script>
+        <script src="scripts/filters/distance.js"></script>
+        <script src="scripts/services/bridge.js"></script>
+        <script src="scripts/filters/unitnum.js"></script>
+        <script src="scripts/controllers/cart.js"></script>
+        <script src="scripts/services/geolocation.js"></script>
+        <script src="scripts/services/cache.js"></script>
+        <script src="scripts/directives/imodal.js"></script>
+        <script src="scripts/controllers/checkout.js"></script>
+        <script src="scripts/controllers/address.js"></script>
+        <script src="scripts/filters/price.js"></script>
+        <script src="scripts/filters/weight.js"></script>
+        <script src="scripts/services/address.js"></script>
+        <script src="scripts/controllers/order.js"></script>
+        <script src="scripts/services/order.js"></script>
+        <script src="scripts/services/config.js"></script>
+        <script src="scripts/filters/order.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

@@ -1,0 +1,35 @@
+<div class="container-fluid address">
+  <div class="global-header address-nav text-center">
+    <a ui-sref="shuwo.checkout" class="link back">
+      <i class="fa fa-chevron-left"></i>
+    </a>
+    <span class="title">收货地址</span>
+    <a ui-sref="shuwo.address.add" class="link home">
+      <i class="fa fa-plus"></i>
+    </a>
+  </div>
+  <p class="text-center loading" ng-show="loading">
+    <i class="fa fa-spinner fa-spin"></i>
+  </p>
+  <div class="main" ng-show="!loading">
+    <div class="address-container container-fluid" ng-repeat="a in addressList">
+      <div class="icon left"><i class="fa fa-user"></i></div>
+      <div class="row">
+        <p class="name">{{a.username}} <small class="color-red">{{a.mobile}}</small></p>
+        <p class="address">{{a.district}}{{a.address}}</p>
+      </div>
+      <div class="icon right" ng-click="setDefault(a);">
+        <i class="fa fa-circle-thin" ng-if="a.isdefault=='0'"></i>
+        <i class="fa fa-check-circle" ng-if="a.isdefault=='1'"></i>
+      </div>
+      <div class="op row text-center">
+        <div class="col-xs-6" ui-sref="shuwo.address.edit({id: a.said})">
+          <p class="edit"><i class="fa fa-edit"></i> 编辑</p>
+        </div>
+        <div class="col-xs-6" ng-click="removeAddress(a)">
+          <p class="remove"><i class="fa fa-trash"></i> 删除</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

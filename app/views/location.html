@@ -1,0 +1,32 @@
+<div class="container-fluid location">
+  <div class="global-header location-header text-center">
+    <a class="link back" ui-sref="shuwo.default">
+      <i class="fa fa-chevron-left"></i>
+    </a>
+    <span class="title">切换地址</span>
+  </div>
+  <div class="location-current" ng-click="currentLocation();">
+    <span><i class="fa fa-location-arrow"></i> 定位到当前地址：</span>
+    <span class="location-loading" ng-show="currentLoading"><i class="fa fa-spinner fa-spin"></i></span>
+    <span class="current" ng-show="!currentLoading"><b>{{current.name}}</b></span>
+  </div>
+  <div class="location-input">
+    <form>
+      <div class="form-group has-feedback">
+        <i class="form-control-feedback fa fa-search"></i>
+        <input type="search" class="form-control" placeholder="输入地址搜索" ng-model="keyword">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success btn-block" ng-disabled="keyword.length==0" ng-click="doSearch()">搜 索</button>
+      </div>
+    </form>
+  </div>
+  <div id="map" style="display: none;"></div>
+  <div class="location-search">
+    <p class="text-center" ng-show="loading"><i class="fa fa-spinner fa-spin"></i></p>
+    <p class="text-center" ng-show="noResults">没有相关地点</p>
+    <ul class="list-group" ng-show="!loading">
+      <li class="list-group-item" ng-repeat="r in results" ng-click="changeLocation(r);">{{r.title}}</li>
+    </ul>
+  </div>
+</div>

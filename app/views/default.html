@@ -1,0 +1,38 @@
+<div class="container-fluid default">
+  <a class="global-header default-header text-center" ui-sref="shuwo.location">
+    <span class="location-loading" ng-show="locationLoading"><i class="fa fa-spinner fa-spin"></i></span>
+    <span class="location title" ng-show="!locationLoading"><i class="fa fa-map-marker"></i> {{location.name}}</span>
+    <i class="fa fa-chevron-right location-arrow"></i>
+  </a>
+
+  <div class="default-banner">
+    <img ng-src="{{banner}}" alt="" width="100%"/>
+  </div>
+
+  <div class="default-list">
+    <p class="title">附近的水果店</p>
+    <p class="text-center" ng-show="shopLoading">
+      <i class="fa fa-spinner fa-spin"></i>
+    </p>
+    <ul class="list-group" ng-show="!shopLoading&&shops.length>0">
+      <a class="list-group-item container-fluid" ng-click="toShop(s);" ui-sref="shuwo.shop.detail({shopId:s.shopid})" ng-repeat="s in shops">
+        <div class="row">
+          <div class="col-sm-3 col-lg-3 col-md-3 col-xs-3 avatar">
+            <img ng-src="{{s.simgurl}}?imageView2/1/w/80/h/80" alt="" class="avatar"/>
+          </div>
+          <div class="col-sm-9 col-lg-9 col-md-9 col-xs-9 info">
+            <p class="name">{{s.spn}} <span class="text-small color-red">{{s.distance | distance}}</span> </p>
+            <p class="notice">通告：{{s.notice}}</p>
+          </div>
+        </div>
+        <div class="arrow">
+          <i class="fa fa-angle-right"></i>
+        </div>
+      </a>
+    </ul>
+    <div ng-show="shops.length==0&&!shopLoading">
+      <p class="text-center">附近还没有水果店</p>
+    </div>
+    <p class="default-tip"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;树窝水果精挑细选您身边的优质水果店，下单后货到付款，水果当面验收，让您足不出户享受健康生活.</p>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="container-fluid order-success">
+  <div class="global-header order-nav text-center">
+    <span class="title">下单成功</span>
+    <a ui-sref="shuwo.default" class="link home">
+      <i class="fa fa-home"></i>
+    </a>
+  </div>
+  <p class="loading text-center" ng-show="loading"><i class="fa fa-spinner fa-spin"></i></p>
+
+  <div class="container-fluid main" ng-show="!loading">
+    <p class="title">订单信息</p>
+    <div class="order-info">
+      <p>订单状态：<span ng-class="{'color-green': order.orderstatus==1, 'color-red': order.orderstatus==0}">{{order.orderstatus | orderStatus}}</span></p>
+      <p>订单编号：{{order.orderid}}</p>
+      <p>订单时间：{{order.createdtime}}</p>
+      <p>店铺名称：{{shop.spn}}</p>
+      <p>店铺电话：<a ng-href="tel:{{shop.phone}}" class="tel">{{shop.phone}}（点击拨打）</a></p>
+      <p>配送时间：{{order.dltime}}</p>
+    </div>
+    <p class="title">订单产品</p>
+    <div class="item-container">
+      <ul class="list-group">
+        <li class="list-group-item row" ng-repeat="p in order.productdetail">
+          <div class="col-xs-4 text-center">
+            <p class="name">{{p.productname}}</p>
+          </div>
+          <div class="col-xs-4 text-center">
+            <p class="color-red" ng-if="p.attribute=='1'">{{p.quantity}}个<span class="text-small">（约{{p.quantity*p.unitweight | weight}}）</span></p>
+            <p class="color-red" ng-if="p.attribute=='2'">{{p.quantity*250 | weight}}</p>
+            <p class="color-red" ng-if="p.attribute=='3'">{{p.quantity}}{{p.unit}}</p>
+          </div>
+          <div class="col-xs-4 text-center">
+            <p class="color-red" ng-if="p.attribute=='1'">约￥{{p.realprice}}</p>
+            <p class="color-red" ng-if="p.attribute=='2'||p.attribute=='3'">￥{{p.realprice}}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="tip">
+      <p><span class="color-red">*</span> 本次订单金额约 <span class="color-red">￥{{order.price}}</span></p>
+      <p><span class="color-red">*</span> 店铺正在为您称重确定价格，我们将通过微信通知您具体重量和价格</p>
+    </div>
+  </div>
+</div>

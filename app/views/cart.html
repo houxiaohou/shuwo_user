@@ -1,0 +1,78 @@
+<div class="container-fluid cart">
+  <div class="global-header cart-nav text-center">
+    <a class="link back" ng-click="back()">
+      <i class="fa fa-chevron-left"></i>
+    </a>
+    <span class="title">购物车</span>
+    <a ui-sref="shuwo.default" class="link home">
+      <i class="fa fa-home"></i>
+    </a>
+  </div>
+  <p class="text-center loading" ng-show="productLoading||shopLoading">
+    <i class="fa fa-spinner fa-spin"></i>
+  </p>
+  <div ng-show="!productLoading&&!shopLoading&&items.length>0">
+    <div class="shop-info">
+      <img ng-src="{{shop.simgurl}}?imageView2/1/w/80/h/80" alt=""/>
+      <p class="name">{{shop.spn}} <span>（满{{shop.dlprice}}元免费送货）</span> </p>
+    </div>
+    <div class="cart-items">
+      <ul class="list-group">
+        <li class="list-group-item container-fluid item" ng-repeat="i in items">
+          <div class="row">
+            <div class="col-xs-11 info">
+              <img ng-src="{{i.product.pimgurl}}?imageView2/1/w/120/h/120" alt="" width="60"/>
+              <div class="op">
+                <p class="name" ng-if="i.product.attribute=='1'">{{i.product.productname}}<small>x{{i.num}}个</small></p>
+                <p class="name" ng-if="i.product.attribute=='2'">{{i.product.productname}}</p>
+                <p class="name" ng-if="i.product.attribute=='3'">{{i.product.productname}}<small>x{{i.num}}{{i.unit}}</small></p>
+                <div class="number">
+                  <i class="fa fa-minus-circle" ng-click="minus(i);"></i>
+                  <span>{{i.num}}</span>
+                  <i class="fa fa-plus-circle" ng-click="plus(i);"></i>
+                </div>
+              </div>
+              <div class="text-center number-info pull-left text-small color-red" ng-if="i.product.attribute==1">
+                <p class="price">约{{((i.num * i.product.unitweight) / 500) * i.product.discount | price}}元</p>
+                <p class="count">约{{i.num * i.product.unitweight | weight}}</p>
+              </div>
+              <div class="text-center number-info pull-left text-small color-red" ng-if="i.product.attribute==2">
+                <p class="price">{{(i.num * 250 * i.product.discount) / 500 | price}}元</p>
+                <p class="count">{{i.num * 250 | weight}}</p>
+              </div>
+              <div class="text-center number-info pull-left text-small color-red" ng-if="i.product.attribute==3">
+                <p class="price">{{i.num * i.product.discount | price}}元</p>
+                <p class="count">{{i.num}}{{i.product.unit}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="remove text-center" ng-click="removeFromCart(i.product, $index);">
+            <i class="fa fa-close"></i>
+          </div>
+        </li>
+      </ul>
+      <p class="cart-tip"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;我们的送果员称重后会反馈给您准确的重量和价格，亲在收货时按照实际价格支付即可</p>
+      <p class="cart-tip"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;如果有品质较差的水果，您可以当面拒收，送果员会减去响应的价格</p>
+    </div>
+    <div class="cart-footer">
+      <div class="row">
+        <div class="col-xs-8">
+          <p class="total">价格约：
+            <span class="color-red">{{totalPrice() | number:2}}元</span>
+          </p>
+        </div>
+        <div class="col-xs-4 text-right">
+          <button class="btn btn-block btn-lg btn-success" ng-click="submit();" ng-disabled="totalPrice()<shop.dlprice">
+            <span ng-if="totalPrice()<shop.dlprice">差{{(shop.dlprice-totalPrice()) | number:2}}元</span>
+            <span ng-if="totalPrice()>=shop.dlprice">提交订单</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ng-show="!productLoading&&!shopLoading&&items.length==0" class="text-center">
+    <img ng-src="{{noneImage}}" alt="" style="margin-top: 50px;width: 150px;"/>
+    <p style="padding-top: 10px;">空空的，快去选水果吧~</p>
+    <button class="btn btn-success" ui-sref="shuwo.default" style="margin-top: 10px;">去选水果</button>
+  </div>
+</div>

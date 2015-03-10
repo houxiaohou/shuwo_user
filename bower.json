@@ -1,0 +1,24 @@
+{
+  "name": "shuwo",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "~1.2.0",
+    "json3": "~3.3.1",
+    "es5-shim": "~3.1.0",
+    "angular-cookies": "~1.2.0",
+    "angular-animate": "~1.2.0",
+    "angular-touch": "~1.2.0",
+    "angular-strap": "~2.1.6",
+    "angular-ui-router": "~0.2.13",
+    "fontawesome": "~4.2.0",
+    "fastclick": "~1.0.3",
+    "angular-local-storage": "~0.1.5",
+    "underscore": "~1.7.0",
+    "ngInfiniteScroll": "~1.2.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.0",
+    "angular-scenario": "~1.2.0"
+  },
+  "appPath": "app"
+}

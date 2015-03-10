@@ -1,0 +1,69 @@
+<div class="container-fluid shop-detail">
+  <div class="global-header shop-nav text-center">
+    <a ui-sref="shuwo.default" class="link back">
+      <i class="fa fa-chevron-left"></i>
+    </a>
+    <span class="title">树窝商铺</span>
+    <a ui-sref="shuwo.cart" class="link cart">
+      <i class="fa fa-shopping-cart"></i>
+    </a>
+    <a ui-sref="shuwo.default" class="link home">
+      <i class="fa fa-home"></i>
+    </a>
+  </div>
+  <p class="text-center loading" ng-show="loading"><i class="fa fa-spinner fa-spin"></i></p>
+  <div ng-show="!loading">
+    <div class="shop-header">
+      <div class="row">
+        <div class="col-xs-3 avatar-container">
+          <img ng-src="{{shop.simgurl}}?imageView2/1/w/80/h/80" alt="" class="avatar" imodal="shop.simgurl"/>
+        </div>
+        <div class="col-xs-7 info-container">
+          <p class="name">{{shop.spn}}</p>
+
+          <p class="color-red text-small">{{shop.spadr}}</p>
+
+          <p class="description">满{{shop.dlprice}}元免运费</p>
+          <p class="description">营业时间：8:00—22:00</p>
+        </div>
+        <div class="col-xs-2 distance-container text-center">
+          <p class="p1"><i class="fa fa-map-marker"></i></p>
+          <p class="p2">距离</p>
+          <p class="p3"><b>{{shop.distance | distance}}</b></p>
+        </div>
+      </div>
+    </div>
+    <div class="shop-board">
+      <p><span class="color-red"><i class="fa fa-bullhorn"></i> 店铺公告 </span> {{shop.notice}}</p>
+    </div>
+    <div class="shop-product">
+      <div class="row">
+        <div class="col-xs-4" ng-repeat="p in products" ng-click="productCart(p);">
+          <div class="well item text-center">
+            <div class="image">
+              <img ng-src="{{p.pimgurl}}?imageView2/1/w/180/h/180" width="100%"/>
+            </div>
+            <div class="info">
+              <p class="name">{{p.productname}}</p>
+              <p class="description">{{p.description}}</p>
+              <p class="color-red">{{p.discount}}元/{{p.unit}}</p>
+              <p class="unit-weight text-small text-grey"><span ng-show="p.attribute==1">(每个约{{p.unitweight}}g)</span></p>
+            </div>
+            <div class="mask text-center" ng-show="cart.isInCart(p);">
+              <i class="fa fa-check"></i>
+              <p class="text-small">已加入购物车</p>
+              <p class="text-small">请到购物车确认数量</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="shop-checkout text-center">
+      <button class="btn btn-success" ui-sref="shuwo.cart" ng-disabled="cart.items().length==0">挑好了，去选数量</button>
+    </div>
+    <div class="shop-cart" ui-sref="shuwo.cart">
+      <i class="fa fa-shopping-cart fa-2x"></i>
+      <span class="badge" ng-if="cart.items().length>0">{{cart.items().length}}</span>
+    </div>
+  </div>
+</div>
