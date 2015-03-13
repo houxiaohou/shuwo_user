@@ -23,17 +23,21 @@ angular.module('shuwoApp')
       geolocation.getLocation().then(function (position) {
         var lat = position.coords.latitude;
         var lng = position.coords.longitude;
-        var point = new BMap.Point(lng, lat);
-        new BMap.Geocoder().getLocation(point, function (rs) {
-          var addComp = rs.addressComponents;
-          $scope.current = {
-            name: addComp.district + addComp.street + addComp.streetNumber,
-            lat: lat,
-            lng: lng
-          };
-          $scope.currentLoading = false;
-          $scope.$apply();
-        });
+        var gpsPoint = new BMap.Point(lng, lat);
+        BMap.Convertor.translate(gpsPoint, translateCallback);
+
+        function translateCallback(point) {
+          new BMap.Geocoder().getLocation(point, function (rs) {
+            var addComp = rs.addressComponents;
+            $scope.current = {
+              name: addComp.district + addComp.street + addComp.streetNumber,
+              lat: point.lat,
+              lng: point.lng
+            };
+            $scope.currentLoading = false;
+            $scope.$apply();
+          });
+        }
       });
 
       $scope.currentLocation = function () {
