@@ -21,7 +21,7 @@
             <img ng-src="{{s.simgurl}}?imageView2/1/w/80/h/80" alt="" class="avatar"/>
           </div>
           <div class="col-sm-9 col-lg-9 col-md-9 col-xs-9 info">
-            <p class="name">{{s.spn}} <span class="text-small color-red">{{s.distance | distance}}</span> </p>
+            <p class="name">{{s.spn}} <img src="images/discount.gif" width="14px" height="13px" class="discountimg" ng-show="{{s.isdiscount==1}}"/>   <span class="text-small color-red">{{s.distance | distance}}</span> </p>
             <p class="notice">通告：{{s.notice}}</p>
           </div>
         </div>

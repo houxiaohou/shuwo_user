@@ -19,13 +19,14 @@
           <img ng-src="{{shop.simgurl}}?imageView2/1/w/80/h/80" alt="" class="avatar" imodal="shop.simgurl"/>
         </div>
         <div class="col-xs-7 info-container">
-          <p class="name">{{shop.spn}}</p>
+          <p class="name">{{shop.spn}}<span style="padding-left: 4px"><img src="images/discount.gif" class="discountimg" width="16px" height="14px"  ng-show="shop.isdiscount==1" ></span></p>
 
-          <p class="color-red text-small">{{shop.spadr}}</p>
 
-          <p class="description">满{{shop.dlprice}}元免运费</p>
+          <p class="description">{{shop.spadr}}</p>
+
+          <p class="color-red text-small">满{{shop.dlprice}}元免运费</p>
           <p class="description">营业时间：8:00—22:00</p>
-        </div>
+      </div>
         <div class="col-xs-2 distance-container text-center">
           <p class="p1"><i class="fa fa-map-marker"></i></p>
           <p class="p2">距离</p>
@@ -34,7 +35,10 @@
       </div>
     </div>
     <div class="shop-board">
-      <p><span class="color-red"><i class="fa fa-bullhorn"></i> 店铺公告 </span> {{shop.notice}}</p>
+    <p><span class="color-red"><i class="fa fa-bullhorn"></i> 店铺公告 </span> {{shop.notice}}</p>
+  </div>
+    <div class="shop-discount" ng-show="shop.isdiscount==1">
+      <p><img src="images/discount.gif" width="14px" height="12px" class="discountimg"/><span class="color-red">    首次下单购买立减10元，以后每次下单立减{{shop.discount}}元</span>
     </div>
     <div class="shop-product">
       <div class="row">
