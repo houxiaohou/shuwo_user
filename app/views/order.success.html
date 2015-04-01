@@ -37,7 +37,7 @@
       </ul>
     </div>
     <div class="tip">
-      <p><span class="color-red">*</span> 本次订单金额约 <span class="color-red">￥{{order.price}}</span></p>
+      <p><span class="color-red">*</span> 本次订单金额约 <span class="color-red">￥{{order.price}}<span class="color-red text-small" style="padding-left: 5px" ng-show="shop.isdiscount ==1 && order.isfirst ==0">(已优惠{{order.discount}}元)</span><span class="color-red text-small" style="padding-left: 5px" ng-show="order.isfirst==1">(首单减免{{order.discount}}元)</span></span></p>
       <p><span class="color-red">*</span> 店铺正在为您称重确定价格，我们将通过微信通知您具体重量和价格</p>
     </div>
   </div>
