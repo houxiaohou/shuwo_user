@@ -8,10 +8,14 @@
  * Controller of the shuwoApp
  */
 angular.module('shuwoApp')
-  .controller('ShopCtrl', ['$scope', 'page', '$stateParams', 'cart', 'shop', 'product', 'bridge',
-    function ($scope, page, $stateParams, cart, shop, product, bridge) {
+  .controller('ShopCtrl', ['$scope', 'page', '$stateParams', 'cart', 'shop', 'product', 'bridge','configuration',
+    function ($scope, page, $stateParams, cart, shop, product, bridge,configuration) {
       page.hideFooter();
       page.setFooterNav('shop');
+
+      $scope.discountimg = configuration.imagePath + 'discount.png';
+      $scope.discountimg_small = configuration.imagePath + 'discount_small.png';
+
       var shopId = $stateParams.shopId;
       // 先从bridge重获取shop
       var object = bridge.getObject();

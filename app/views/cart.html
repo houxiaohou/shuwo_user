@@ -14,8 +14,10 @@
   <div ng-show="!productLoading&&!shopLoading&&items.length>0">
     <div class="shop-info">
       <img ng-src="{{shop.simgurl}}?imageView2/1/w/80/h/80" alt=""/>
-      <p class="name">{{shop.spn}} <span>（满{{shop.dlprice}}元免费送货）</span> </p>
+      <p >{{shop.spn}} <span>（满{{shop.dlprice}}元免费送货）</span> </p>
     </div>
+
+
     <div class="cart-items">
       <ul class="list-group">
         <li class="list-group-item container-fluid item" ng-repeat="i in items">
@@ -51,6 +53,8 @@
           </div>
         </li>
       </ul>
+      <p class="cart-tip"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;支持首次下单减免10元</p>
+      <p class="cart-tip" ng-show="shop.isdiscount==1"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;支持再次下单减免{{shop.discount}}元</p>
       <p class="cart-tip"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;我们的送果员称重后会反馈给您准确的重量和价格，亲在收货时按照实际价格支付即可</p>
       <p class="cart-tip"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;如果有品质较差的水果，您可以当面拒收，送果员会减去响应的价格</p>
     </div>
