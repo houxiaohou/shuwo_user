@@ -23,7 +23,7 @@
         </div>
         <div class="row text-center price">
           <div class="col-xs-12">
-            <p>订单金额：<span class="color-red"><span ng-if="o.orderstatus==0">约</span>￥{{o.price}}</span><span class="color-grey text-small">（共{{o.productdetail.length}}种水果）</span></p>
+            <p>订单金额：<span class="color-red"><span ng-if="o.orderstatus==0">约</span>￥{{o.price}}<span class="color-red text-small" ng-show="o.isfirst == 1 || o.discount>0"> (已优惠{{o.discount}}元)</span></span><span class="color-grey text-small">（共{{o.productdetail.length}}种水果）</span></p>
           </div>
         </div>
         <div class="panel-group" bs-collapse ng-model="o.open">
