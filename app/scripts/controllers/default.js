@@ -34,6 +34,17 @@ angular.module('shuwoApp')
         if (newVal !== undefined) {
           shop.listShopsNearBy(0, 5).success(function (data) {
             $scope.shops = data;
+            for(var i in $scope.shops)
+            {
+              if($scope.shops[i]['notice'].length>46)
+              {
+                $scope.shops[i]['shopnotice'] = $scope.shops[i]['notice'].substr(0,46)+'……';
+              }
+              else
+              {
+                $scope.shops[i]['shopnotice'] = $scope.shops[i]['notice'];
+              }
+            }
             $scope.shopLoading = false;
           }).error(function() {
             $scope.shops = [];
