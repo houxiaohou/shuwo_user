@@ -18,8 +18,8 @@
           <p>订单编号：{{o.orderid}}</p>
           <p>订单日期：{{o.createdtime}}</p>
           <p>店铺名称：{{shops[o.shopid].spn}}</p>
-          <p>店铺电话：<a ng-href="tel:{{shops[o.shopid].phone}}" class="tel">{{shops[o.shopid].phone}}（点击拨打）</a></p>
-          <p>配送时间：{{o.dltime}}</p>
+          <p style="font-size: 12px">店铺电话：<a ng-href="tel:{{shops[o.shopid].phone}}" class="tel">{{shops[o.shopid].phone}}<span class="color-red">(我要催单)</span></a></p>
+          <p>配送时间：{{o.dltime}}<span class="color-green">(若未能及时确认，可拨打电话催单)</span></p>
         </div>
         <div class="row text-center price">
           <div class="col-xs-12">

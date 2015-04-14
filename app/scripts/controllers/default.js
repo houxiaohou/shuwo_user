@@ -36,9 +36,9 @@ angular.module('shuwoApp')
             $scope.shops = data;
             for(var i in $scope.shops)
             {
-              if($scope.shops[i]['notice'].length>46)
+              if($scope.shops[i]['notice'].length>28)
               {
-                $scope.shops[i]['shopnotice'] = $scope.shops[i]['notice'].substr(0,46)+'……';
+                $scope.shops[i]['shopnotice'] = $scope.shops[i]['notice'].substr(0,28)+'……';
               }
               else
               {
