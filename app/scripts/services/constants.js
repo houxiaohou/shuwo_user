@@ -17,7 +17,8 @@ angular.module('shuwoApp')
         product: prefix + '/product',
         address: prefix + '/address',
         order: prefix + '/order',
-        userOrder: prefix + '/user/orders'
+        userOrder: prefix + '/user/orders',
+        orderConfirm: prefix + '/orderconfirm'
       }
     }
   }]);

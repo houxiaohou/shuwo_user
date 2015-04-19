@@ -25,6 +25,10 @@ angular.module('shuwoApp')
 
       createOrder: function (o) {
         return $http.post(constants.API.order, o);
+      },
+
+      confirmOrder: function(id) {
+        return $http.post(constants.API.orderConfirm, {orderid: id});
       }
     }
   }]);

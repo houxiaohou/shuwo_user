@@ -20,5 +20,8 @@ angular.module('shuwoApp')
       if (input == 2) {
         return '无效';
       }
+      if (input == 3) {
+        return '已收货';
+      }
     };
   });

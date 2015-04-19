@@ -14,7 +14,7 @@
     <ul class="list-group" infinite-scroll="loadMore()" infinite-scroll-disabled="loading" infinite-scroll-distance="2" ng-show="orders.length>0">
       <li class="list-group-item" ng-repeat="o in orders">
         <div class="text-small color-grey">
-          <p>订单状态：<span ng-class="{'color-green': o.orderstatus==1, 'color-red': o.orderstatus==0}">{{o.orderstatus | orderStatus}}</span></p>
+          <p>订单状态：<span ng-class="{'color-green': o.orderstatus==1, 'color-red': o.orderstatus==0}">{{o.orderstatus | orderStatus}}</span><button ng-click="confirmOrder(o);" ng-if="o.orderstatus==1" class="btn btn-sm pull-right btn-success">确认收货</button></p>
           <p>订单编号：{{o.orderid}}</p>
           <p>订单日期：{{o.createdtime}}</p>
           <p>店铺名称：{{shops[o.shopid].spn}}</p>

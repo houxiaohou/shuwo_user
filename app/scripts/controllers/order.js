@@ -19,6 +19,14 @@ angular.module('shuwoApp')
       $scope.noneImage = configuration.imagePath + 'wan.png';
       var count = 10;
 
+      $scope.confirmOrder = function (o) {
+        if (confirm('请在收到水果后再确认收货，确认收货吗？')) {
+          order.confirmOrder(o.orderid).success(function() {
+            o.orderstatus = 3;
+          });
+        }
+      };
+
       $scope.loadMore = function () {
         if ($scope.end) {
           return;
@@ -33,7 +41,7 @@ angular.module('shuwoApp')
               var shopId = data[i].shopid;
               console.log(shopId);
               if (!(shopId in $scope.shops)) {
-                shop.getShopById(shopId).success(function(data) {
+                shop.getShopById(shopId).success(function (data) {
                   $scope.shops[data.shopid] = data;
                 });
               }
@@ -82,7 +90,7 @@ angular.module('shuwoApp')
       order.getOrderById(orderId).success(function (data) {
         $scope.order = data;
 
-        shop.getShopById(data.shopid).success(function(data) {
+        shop.getShopById(data.shopid).success(function (data) {
           $scope.shop = data;
           $scope.loading = false;
         });

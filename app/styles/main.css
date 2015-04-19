@@ -128,7 +128,7 @@ p {
 
 .global-header {
   background: #5eb95e;
-  color: #ffffff;
+  color: #ffffff !important;
   display: block;
   height: 46px;
   line-height: 46px;
@@ -578,6 +578,22 @@ p {
   color: #5eb95e;
   position: absolute;
   top: 0;
+}
+
+.checkout .delivery-chose {
+  width: 60%;
+  margin: 10px 20%;
+}
+
+.checkout .delivery-chose a {
+  width: 50%;
+}
+
+.checkout .shop-address {
+  border-bottom: 1px solid #dedede;
+  border-top: 1px solid #dedede;
+  background: #ffffff;
+  padding: 10px;
 }
 
 .checkout .main p.title {

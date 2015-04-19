@@ -8,13 +8,36 @@
  * Controller of the shuwoApp
  */
 angular.module('shuwoApp')
-  .controller('CheckoutCtrl', ['$scope', '$state', 'address', 'bridge', 'storage', 'page', 'order', 'cart',
-    function ($scope, $state, address, bridge, storage, page, order, cart) {
+  .controller('CheckoutCtrl', ['$scope', '$state', 'address', 'bridge', 'storage', 'page', 'order', 'cart', 'shop', 'geolocation',
+    function ($scope, $state, address, bridge, storage, page, order, cart, shop, geolocation) {
       page.hideFooter();
+
+      geolocation.getLocation().then(function (position) {
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+        var gpsPoint = new BMap.Point(lng, lat);
+        BMap.Convertor.translate(gpsPoint, translateCallback);
+
+        function translateCallback(point) {
+          console.log(point);
+          new BMap.Geocoder().getLocation(point, function (rs) {
+            $scope.lat = point.lat;
+            $scope.lng = point.lng;
+          });
+        }
+      });
 
       $scope.notes = '';
       $scope.addressLoading = true;
       $scope.submitting = false;
+      $scope.ispickup = 0;
+
+      $scope.lat = 0;
+      $scope.lng = 0;
+
+      $scope.choseDelivery = function (i) {
+        $scope.ispickup = i;
+      };
 
       // 获取默认送货地址
       if (bridge.getAddress()) {
@@ -41,6 +64,11 @@ angular.module('shuwoApp')
       } else {
         var obj = angular.fromJson(orderObject);
         $scope.shopid = obj.shopid;
+
+        shop.getShopById($scope.shopid).success(function (data) {
+          $scope.shop = data;
+        });
+
         $scope.items = obj.items;
         $scope.totalPrice = function () {
           var total = 0.00;
@@ -88,14 +116,17 @@ angular.module('shuwoApp')
           shopid: $scope.shopid,
           orderdetail: JSON.stringify(orderdetail),
           dltime: $scope.selectedTime.label,
-          notes: $scope.notes
+          notes: $scope.notes,
+          ispickup: $scope.ispickup,
+          lat: $scope.lat,
+          lng: $scope.lng
         };
         order.createOrder(o).success(function (data) {
           $state.go('shuwo.order.success', {orderId: data.orderid});
           storage.removeItem('order');
           storage.removeItem('cart');
           cart.truncate();
-        }).error(function() {
+        }).error(function () {
           alert('提交订单出错，请重试或者联系客服解决');
         });
       };
