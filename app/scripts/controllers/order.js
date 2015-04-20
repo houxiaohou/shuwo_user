@@ -21,8 +21,9 @@ angular.module('shuwoApp')
 
       $scope.confirmOrder = function (o) {
         if (confirm('请在收到水果后再确认收货，确认收货吗？')) {
-          order.confirmOrder(o.orderid).success(function() {
+          order.confirmOrder(o.orderid).success(function () {
             o.orderstatus = 3;
+            alert('成功确认收货，谢谢您的支持！');
           });
         }
       };

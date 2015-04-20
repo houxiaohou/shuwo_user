@@ -245,6 +245,14 @@ p {
   color: #a2a2a2;
 }
 
+.location-change {
+  right: 0;
+  position: absolute;
+  top: 0;
+  font-size: 12px;
+  width: 70px;
+}
+
 .location .has-feedback .form-control {
   padding-left: 30px;
   padding-right: 0;
@@ -580,9 +588,13 @@ p {
   top: 0;
 }
 
+.checkout .delivery-title {
+  margin-left: 10px;
+}
+
 .checkout .delivery-chose {
-  width: 60%;
-  margin: 10px 20%;
+  width: 50%;
+  margin: 10px;
 }
 
 .checkout .delivery-chose a {

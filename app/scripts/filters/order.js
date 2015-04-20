@@ -15,7 +15,7 @@ angular.module('shuwoApp')
         return '待确认';
       }
       if (input == 1) {
-        return '已确认';
+        return '已发货';
       }
       if (input == 2) {
         return '无效';

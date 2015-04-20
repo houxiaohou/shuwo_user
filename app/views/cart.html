@@ -19,6 +19,8 @@
 
 
     <div class="cart-items">
+      <p class="cart-tip"><i class="fa fa-star color-red">&nbsp;&nbsp;支持首次下单减免10元</i></p>
+      <p class="cart-tip" ng-show="shop.isdiscount==1 && shop.discount>0 "><i class="fa fa-star color-red">&nbsp;&nbsp;支持再次下单减免{{shop.discount}}元</i></p>
       <ul class="list-group">
         <li class="list-group-item container-fluid item" ng-repeat="i in items">
           <div class="row">
@@ -53,8 +55,6 @@
           </div>
         </li>
       </ul>
-      <p class="cart-tip"><i class="fa fa-star color-red">&nbsp;&nbsp;支持首次下单减免10元</i></p>
-      <p class="cart-tip" ng-show="shop.isdiscount==1 && shop.discount>0 "><i class="fa fa-star color-red">&nbsp;&nbsp;支持再次下单减免{{shop.discount}}元</i></p>
       <p class="cart-tip"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;我们的送果员称重后会反馈给您准确的重量和价格，亲在收货时按照实际价格支付即可</p>
       <p class="cart-tip"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;如果有品质较差的水果，您可以当面拒收，送果员会减去相应的价格</p>
     </div>
