@@ -30,7 +30,7 @@ angular.module('shuwoApp')
       $scope.notes = '';
       $scope.addressLoading = true;
       $scope.submitting = false;
-      $scope.ispickup = 0;
+      $scope.ispickup = 1;
 
       $scope.lat = 0;
       $scope.lng = 0;
@@ -92,8 +92,20 @@ angular.module('shuwoApp')
       ];
       $scope.selectedTime = $scope.times[0];
 
-      // 提交订单
       $scope.submit = function () {
+        // 提交订单
+        if ($scope.ispickup == 1) {
+          if (!confirm('您选择的是 “店内自提”，订单无法送货上门，点击确定提交订单，点击 “取消” 继续编辑下单信息')) {
+            return;
+          }
+        }
+
+        if (($scope.lat == 0 || $scope.lng == 0) && $scope.ispickup == 0) {
+          // 未允许获取位置并且选择的外送
+          if (!confirm('由于您没有允许定位，树窝无法获取您的位置，请确认您的订单是外送订单，点击确定提交订单，点击 “取消” 编辑下单信息')) {
+            return;
+          }
+        }
 
         if ($scope.address === undefined || $scope.address.said === 0) {
           alert('配送地址不正确，请重新确认送货地址');

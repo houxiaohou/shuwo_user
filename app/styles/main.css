@@ -78,12 +78,10 @@ p {
 
 .form-control {
   border-radius: 2px;
-  -webkit-appearance: none;
 }
 
 .form-control:focus {
   outline: 0;
-  -webkit-box-shadow: none;
   box-shadow: none;
 }
 
@@ -186,6 +184,7 @@ p {
   border-color: #dedede;
   background: #FFFFFF;
   box-sizing: content-box;
+  margin-bottom: 2px;
 }
 
 .default .default-list .list-group-item .avatar {
@@ -213,11 +212,12 @@ p {
 
 .default .default-list .list-group-item .info .notice {
   font-size: 12px;
+  padding-right: 10px;
 }
 
 .default .default-list .list-group-item .arrow {
   position: absolute;
-  right: 5px;
+  right: 2px;
   top: 0;
   height: 80px;
   line-height: 80px;
@@ -310,7 +310,8 @@ p {
 }
 
 .discountimg {
-  margin-top: -2px;
+  margin-top: -3px;
+  width: 16px;
 }
 
 .shop-detail .shop-header .description {
@@ -421,14 +422,21 @@ p {
 }
 
 .shop-detail .shop-checkout {
-  height: 44px;
-  line-height: 44px;
+  height: 50px;
+  line-height: 50px;
   background: #FFFFFF;
   border-top: 1px solid #dedede;
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.shop-detail .shop-checkout button {
+  font-weight: bold;
+  border: none;
+  height: 40px;
+  width: 85%;
 }
 
 .shop-detail .shop-cart {
@@ -805,6 +813,11 @@ p {
 .order-success .main .order-info {
   padding: 0 30px;
   margin-bottom: 10px;
+}
+
+.order-success .to-order-list {
+  width: 60%;
+  margin-left: 20%;
 }
 
 .default .default-tip {

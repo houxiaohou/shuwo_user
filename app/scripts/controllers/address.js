@@ -49,8 +49,6 @@ angular.module('shuwoApp')
 angular.module('shuwoApp')
   .controller('AddressAddCtrl', ['$rootScope', '$scope', '$state', 'address', function ($rootScope, $scope, $state, address) {
     // 新增地址
-    var previous = $rootScope.previousState;
-
     $scope.address = {
       province: '上海',
       city: '上海市区',
@@ -65,6 +63,14 @@ angular.module('shuwoApp')
       }
     })();
 
+    $scope.addressPattern = (function() {
+      return {
+        test: function(value) {
+          return value.length >= 5;
+        }
+      }
+    })();
+
     var saving = false;
 
     $scope.saveAddress = function () {
@@ -74,7 +80,7 @@ angular.module('shuwoApp')
       saving = true;
       address.addAddress($scope.address).success(function () {
         // 添加成功后跳转
-        $state.go(previous);
+        $state.go('shuwo.checkout');
       });
     };
 
