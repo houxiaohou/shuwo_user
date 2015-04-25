@@ -134,6 +134,10 @@ angular.module('shuwoApp')
           lng: $scope.lng
         };
         order.createOrder(o).success(function (data) {
+          if ('error' in data && data.error == 'blocked') {
+            alert('涉嫌刷单已被禁止下单，如有疑问请联系客服');
+            return;
+          }
           $state.go('shuwo.order.success', {orderId: data.orderid});
           storage.removeItem('order');
           storage.removeItem('cart');
