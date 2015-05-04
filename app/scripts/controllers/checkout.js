@@ -8,8 +8,8 @@
  * Controller of the shuwoApp
  */
 angular.module('shuwoApp')
-  .controller('CheckoutCtrl', ['$scope', '$state', 'address', 'bridge', 'storage', 'page', 'order', 'cart', 'shop', 'geolocation',
-    function ($scope, $state, address, bridge, storage, page, order, cart, shop, geolocation) {
+  .controller('CheckoutCtrl', ['$scope', '$state', 'address', 'bridge', 'storage', 'page', 'order', 'cart', 'shop', 'geolocation', 'bag',
+    function ($scope, $state, address, bridge, storage, page, order, cart, shop, geolocation, bag) {
       page.hideFooter();
 
       geolocation.getLocation().then(function (position) {
@@ -31,6 +31,10 @@ angular.module('shuwoApp')
       $scope.addressLoading = true;
       $scope.submitting = false;
       $scope.ispickup = 1;
+      $scope.bags = [];
+      $scope.selectedBag = undefined;
+      $scope.o = -1;
+      $scope.type = 2;
 
       $scope.lat = 0;
       $scope.lng = 0;
@@ -38,6 +42,39 @@ angular.module('shuwoApp')
       $scope.choseDelivery = function (i) {
         $scope.ispickup = i;
       };
+
+      $scope.choseBag = function (b) {
+        // 选择优惠券
+        if (!$scope.selectedBag || $scope.selectedBag.id != b.id) {
+          $scope.selectedBag = b;
+        } else {
+          $scope.selectedBag = undefined;
+        }
+        $scope.o = -1;
+      };
+
+      $scope.listUserBags = function () {
+        $scope.selectedBag = undefined;
+        bag.listUserAvailableBags($scope.type).success(function (data) {
+          $scope.bags = data;
+          if ($scope.bags.length > 0) {
+            $scope.selectedBag = $scope.bags[0];
+          }
+        });
+      };
+
+      $scope.listUserBags();
+
+      $scope.$watch('ispickup', function (newVal, oldVal) {
+        if (newVal != oldVal) {
+          if (newVal == 1) {
+            $scope.type = 2;
+          } else {
+            $scope.type = 1;
+          }
+          $scope.listUserBags();
+        }
+      });
 
       // 获取默认送货地址
       if (bridge.getAddress()) {
@@ -133,10 +170,21 @@ angular.module('shuwoApp')
           lat: $scope.lat,
           lng: $scope.lng
         };
+        if ($scope.selectedBag) {
+          o.bag_id = $scope.selectedBag.id;
+        } else {
+          o.bag_id = 0;
+        }
         order.createOrder(o).success(function (data) {
-          if ('error' in data && data.error == 'blocked') {
-            alert('涉嫌刷单已被禁止下单，如有疑问请联系客服');
-            return;
+          if ('error' in data) {
+            if (data.error == 'blocked') {
+              alert('涉嫌刷单已被禁止下单，如有疑问请联系客服');
+              return;
+            }
+            if (data.error == 'bag_unavailable') {
+              alert('您选择的红包不可用');
+              return;
+            }
           }
           $state.go('shuwo.order.success', {orderId: data.orderid});
           storage.removeItem('order');

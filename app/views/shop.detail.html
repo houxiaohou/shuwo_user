@@ -19,7 +19,7 @@
           <img ng-src="{{shop.simgurl}}?imageView2/1/w/80/h/80" alt="" class="avatar" imodal="shop.simgurl"/>
         </div>
         <div class="col-xs-7 info-container">
-          <p class="name">{{shop.spn}}<span style="padding-left: 4px"><img ng-src="{{discountimg}}" class="discountimg"  ng-show="shop.isdiscount==1" ></span></p>
+          <p class="name">{{shop.spn}}<span style="padding-left: 4px"><img ng-src="{{discountimg}}" class="discountimg"  ng-show="shop.isbag=='1'" ></span></p>
 
 
           <p class="description">{{shop.spadr}}</p>
@@ -37,8 +37,8 @@
     <div class="shop-board">
     <p><span class="color-red"><i class="fa fa-bullhorn"></i> 店铺公告 </span> {{shop.notice}}</p>
   </div>
-    <div class="shop-discount" ng-show="shop.isdiscount==1">
-      <p><img ng-src="{{discountimg}}"  class="discountimg" style="width: 14px;"/><span class="color-red">    首次下单购买立减10元，以后每次下单立减{{shop.discount}}元（每日仅优惠一单）</span>
+    <div class="shop-discount" ng-show="shop.isbag=='1'">
+      <p><img ng-src="{{discountimg}}"  class="discountimg" style="width: 14px;"/><span class="color-red">&nbsp;&nbsp;&nbsp;&nbsp;本店支持优惠券</span>
     </div>
     <div class="shop-product">
       <div class="row">

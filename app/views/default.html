@@ -6,7 +6,7 @@
   </a>
 
   <div class="default-banner">
-    <img ng-src="{{banner}}" alt="" width="100%"/>
+    <a href="#/bag"><img ng-src="{{banner}}" alt="" width="100%"/></a>
   </div>
 
   <div class="default-list">
@@ -21,7 +21,7 @@
             <img ng-src="{{s.simgurl}}?imageView2/1/w/80/h/80" alt="" class="avatar"/>
           </div>
           <div class="col-sm-9 col-lg-9 col-md-9 col-xs-9 info">
-            <p class="name">{{s.spn}} <img ng-src="{{discountimg}}" class="discountimg" ng-show="{{s.isdiscount==1}}"/>   <span class="text-small color-red">{{s.distance | distance}}</span> </p>
+            <p class="name">{{s.spn}} <img ng-src="{{discountimg}}" class="discountimg" ng-show="{{s.isbag==1}}"/>   <span class="text-small color-red">{{s.distance | distance}}</span> </p>
             <p class="notice">通告：{{s.shopnotice}}</p>
           </div>
         </div>

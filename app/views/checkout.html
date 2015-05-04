@@ -11,12 +11,16 @@
 
   <div ng-show="!loading" class="main">
     <span class="delivery-title">选择送货方式：</span>
+
     <div class="btn-group delivery-chose" role="group">
-      <a href="javascript:;" class="btn btn-default btn-sm" ng-class="{'btn-warning': ispickup==1}" ng-click="choseDelivery(1);"  role="button">到店自提</a>
-      <a href="javascript:;" class="btn btn-default btn-sm" ng-class="{'btn-warning': ispickup==0}" ng-click="choseDelivery(0);" role="button">送货上门</a>
+      <a href="javascript:;" class="btn btn-default btn-sm" ng-class="{'btn-warning': ispickup==1}"
+         ng-click="choseDelivery(1);" role="button">到店自提</a>
+      <a href="javascript:;" class="btn btn-default btn-sm" ng-class="{'btn-warning': ispickup==0}"
+         ng-click="choseDelivery(0);" role="button">送货上门</a>
     </div>
     <div class="address-container container-fluid" ui-sref="shuwo.address.list" ng-show="ispickup==0">
       <p class="loading text-center" ng-show="addressLoading"><i class="fa fa-spinner fa-spin"></i></p>
+
       <div ng-show="!addressLoading">
         <div class="icon left"><i class="fa fa-user"></i></div>
         <div class="row">
@@ -29,6 +33,7 @@
       </div>
     </div>
     <p class="shop-address" ng-show="shop!==undefined&&ispickup==1">店铺地址：{{shop.spadr}}</p>
+
     <p class="title">订单产品</p>
 
     <div class="container-fluid item-container">
@@ -38,40 +43,88 @@
             <p class="name">{{i.name}}</p>
           </div>
           <div class="col-xs-4">
-            <p class="text-small color-red" ng-if="i.attribute=='1'">{{i.num}}个<small class="color-grey">（约{{i.weight | weight}}）</small></p>
+            <p class="text-small color-red" ng-if="i.attribute=='1'">{{i.num}}个
+              <small class="color-grey">（约{{i.weight | weight}}）</small>
+            </p>
             <p class="color-red" ng-if="i.attribute=='2'">{{i.weight | weight}}</p>
+
             <p class="color-red" ng-if="i.attribute=='3'">{{i.num}}{{i.unit}}</p>
           </div>
           <div class="col-xs-4">
             <p class="color-red" ng-if="i.attribute=='1'">约{{i.price | number:2}}元</p>
+
             <p class="color-red" ng-if="i.attribute=='2' || i.attribute=='3'">{{i.price | number:2}}元</p>
           </div>
         </li>
       </ul>
     </div>
-    <div ng-show="ispickup==0">
-    <p class="title">选择配送时间</p>
-
-    <div class="container-fluid time-container">
-      <div class="select">
-        <select class="form-control" ng-model="selectedTime" ng-options="time as time.label for time in times"></select>
+    <div class="panel-group bag-group" bs-collapse ng-model="o" ng-show="bags.length>0&&shop.isbag==1">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row" bs-collapse-toggle>
+            <div class="col-xs-4">选择优惠券</div>
+            <div class="col-xs-4 text-center">
+              <p class="color-red" ng-show="selectedBag===undefined">未使用优惠券</p>
+              <p class="color-red" ng-show="selectedBag!==undefined">-{{selectedBag.amount}}元</p>
+            </div>
+            <div class="col-xs-4 text-right color-green">
+              <span ng-if="isNaN(o)||o===-1">点击展开 <i class="fa fa-angle-double-down"></i></span>
+              <span ng-if="o==0">点击关闭 <i class="fa fa-angle-double-up"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class="panel-collapse" bs-collapse-target>
+          <div class="panel-body item-container">
+            <ul class="list-group">
+              <li class="list-group-item row" ng-repeat="b in bags" ng-click="choseBag(b);">
+                <div class="col-xs-7" ng-if="b.type==1">{{b.amount}}元外送优惠券</div>
+                <div class="col-xs-7" ng-if="b.type==2">{{b.amount}}元自提优惠券</div>
+                <div class="col-xs-4">{{b | leftDays}}</div>
+                <div class="col-xs-1 text-right">
+                  <div class="icon right">
+                    <i class="fa fa-circle-thin" ng-if="b.id!=selectedBag.id"></i>
+                    <i class="fa fa-check-circle" ng-if="b.id==selectedBag.id"></i>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-    <p class="title">订单留言</p>
+    <div class="panel-group bag-group" ng-show="bags.length==0&&shop.isbag==1">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-4">选择优惠券</div>
+            <div class="col-xs-4 text-center">
+              <p class="color-red">无可用优惠券</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <div class="container-fluid notes-container">
-      <textarea class="form-control" cols="30" rows="2" placeholder="填写订单留言" ng-model="notes"></textarea>
+    <div ng-show="ispickup==0">
+      <p class="title">选择配送时间</p>
+
+      <div class="container-fluid time-container">
+        <div class="select">
+          <select class="form-control" ng-model="selectedTime"
+                  ng-options="time as time.label for time in times"></select>
+        </div>
+      </div>
+      <p class="title">订单留言</p>
+
+      <div class="container-fluid notes-container">
+        <textarea class="form-control" cols="30" rows="2" placeholder="填写订单留言" ng-model="notes"></textarea>
+      </div>
     </div>
-    </div>
-    <p class="color-red text-small" style="padding-top: 10px" >&nbsp;&nbsp;&nbsp;<span class="fa fa-star"></span>&nbsp;下单成功后，我们将减去相应的优惠价格。</p>
   </div>
   <div class="cart-footer">
     <div class="row">
       <div class="col-xs-8">
-        <p class="total">价格约：<span class="color-red">{{totalPrice() | price}}元</span>
-          <small ng-show="ispickup==0">（货到付款）</small>
-          <small ng-show="ispickup==1">（到店自提）</small>
-        </p>
+        <p class="total">价格约：<span class="color-red">{{totalPrice() | price}}元</span><span class="small color-red" ng-if="selectedBag">（-{{selectedBag.amount}}元优惠券）</span></p>
       </div>
       <div class="col-xs-4 text-right" ng-show="!submitting">
         <button class="btn btn-block btn-lg btn-success" ng-click="submit();">提交订单</button>

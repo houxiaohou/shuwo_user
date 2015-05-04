@@ -13,7 +13,7 @@ angular.module('shuwoApp')
       page.hideFooter();
       page.setFooterNav('shop');
 
-      $scope.discountimg = configuration.imagePath + 'discount-new.png';
+      $scope.discountimg = configuration.imagePath + 'quan.png';
 
       var shopId = $stateParams.shopId;
       // 先从bridge重获取shop

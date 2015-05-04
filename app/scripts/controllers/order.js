@@ -40,7 +40,6 @@ angular.module('shuwoApp')
           if (data.length > 0) {
             for (var i in data) {
               var shopId = data[i].shopid;
-              console.log(shopId);
               if (!(shopId in $scope.shops)) {
                 shop.getShopById(shopId).success(function (data) {
                   $scope.shops[data.shopid] = data;

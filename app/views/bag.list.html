@@ -1,0 +1,50 @@
+<div class="container-fluid order bag">
+  <div class="global-header order-nav text-center">
+    <span class="title">我的优惠券</span>
+    <a ui-sref="shuwo.default" class="link home">
+      <i class="fa fa-home"></i>
+    </a>
+  </div>
+  <div class="bag-container">
+    <div class="btn-group used-chose" role="group">
+      <a href="javascript:;" class="btn btn-default btn-sm" ng-class="{'btn-warning': used==0}" ng-click="choseUsed(0);"
+         role="button">未使用</a>
+      <a href="javascript:;" class="btn btn-default btn-sm" ng-class="{'btn-warning': used==1}" ng-click="choseUsed(1);"
+         role="button">已使用</a>
+    </div>
+    <p class="text-center loading" ng-show="loading">
+      <i class="fa fa-spinner fa-spin"></i>
+    </p>
+
+    <div class="bags-list" ng-show="!loading&&bags.length>0">
+      <div class="bag-info" ng-class="{'used': (b.used==1||b.expired==1), 'shop': b.type==2}" ng-repeat="b in bags">
+        <img ng-src="{{expired_img}}" alt="" ng-show="b.expired==1" class="expired-img" />
+        <img ng-src="{{used_img}}" alt="" ng-show="b.used==1" class="expired-img" />
+        <div class="row">
+          <div class="col-xs-4 amount">
+            <img ng-src="{{green_5}}" alt="" ng-show="b.used==0&&b.expired==0&&b.type==1&&b.amount==5" class="green-5"/>
+            <img ng-src="{{red_5}}" alt="" ng-show="b.used==0&&b.expired==0&&b.type==2&&b.amount==5" class="green-5"/>
+            <img ng-src="{{green_10}}" alt="" ng-show="b.used==0&&b.expired==0&&b.amount==10" class="green-10"/>
+            <img ng-src="{{grey_5}}" alt="" ng-show="(b.used==1||b.expired==1)&&b.amount==5" class="green-5"/>
+            <img ng-src="{{grey_10}}" alt="" ng-show="(b.used==1||b.expired==1)&&b.amount==10" class="green-10 grey"/>
+          </div>
+          <div class="col-xs-8 info">
+            <p class="title" ng-show="b.type==1">外送优惠券</p>
+            <p class="title" ng-show="b.type==2">店内优惠券</p>
+            <p class="expired">有效期 {{b.start | expireDate}} - {{b | expireDateEver}}</p>
+            <p class="expired" ng-show="b.type==1">只能用于树窝外送订单</p>
+            <p class="expired" ng-show="b.type==2">只能用于店内自提订单</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p ng-show="!loading&&bags.length==0&&used==0" class="no-tip">还没有可用的优惠券</p>
+
+    <p ng-show="!loading&&bags.length==0&&used==1" class="no-tip">还没有使用过优惠券</p>
+
+    <div class="default-tip" ng-show="bags.length>0">
+      <p ng-show="used==0"><i class="fa fa-leaf color-green"></i> 优惠券在结算时可直接使用</p>
+      <p ng-show="used==1"><i class="fa fa-leaf color-green"></i> 显示您已经使用和已经过期的优惠券</p>
+    </div>
+  </div>
+</div>

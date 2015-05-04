@@ -820,7 +820,7 @@ p {
   margin-left: 20%;
 }
 
-.default .default-tip {
+.default-tip {
   padding: 0 10px;
   font-size: 12px;
   color: #878787;
@@ -830,4 +830,118 @@ p {
   font-size: 12px;
   color: #878787;
   padding: 0 10px;
+}
+
+.bag {
+  padding-top: 50px;
+}
+
+.bag .used-chose {
+  width: 100%;
+  margin: auto;
+  padding: 5px 20px;
+}
+
+.bag .used-chose a {
+  width: 50%;
+}
+
+.bag .bags-list {
+  padding: 0 10px;
+}
+
+.bag .bag-info.used .row {
+  opacity: .5;
+}
+
+.bag .bag-info.used .expired-img {
+  position: absolute;
+  height: 50px;
+  margin-left: 80px;
+  margin-top: 10px;
+}
+
+.bag .bag-info {
+  width: 300px;
+  background: url('../images/bag-bg.png') center;
+  background-size: cover;
+  padding: 0;
+  border: none;
+  height: 72px;
+  color: #FFFFFF;
+  margin: auto auto 10px;
+}
+
+.bag .bag-info.shop {
+  background: url('../images/bag-red-bg.png') center;
+  background-size: cover;
+}
+
+.bag .bag-info.used {
+  background: url('../images/bag-used-bg.png') center;
+  background-size: cover;
+  color: #b2b4b2;
+}
+
+.bag .bag-info .amount .green-5 {
+  margin-left: 44px;
+  width: 38px;
+  margin-top: 14px;
+}
+
+.bag .bag-info .amount .green-10 {
+  width: 60px;
+  margin-left: 32px;
+  margin-top: 17px;
+}
+
+.bag .bag-info .amount .green-10.grey {
+  margin-left: 40px;
+}
+
+.bag .bag-info .info {
+  margin-top: 5px;
+  padding-right: 20px !important;
+  text-align: center;
+}
+
+.bag .bag-info .tip, .bag .bag-info .expired {
+  font-size: 12px;
+}
+
+.bag .bag-info .title {
+  font-size: 16px;
+}
+
+.bag .bag-container .no-tip {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.checkout .bag-group {
+  margin-top: 10px;
+}
+
+.checkout .bag-group .panel-heading {
+  background: #ffffff;
+}
+
+.checkout .bag-group .panel-body {
+  padding: 0;
+}
+
+.checkout .bag-group .list-group {
+  line-height: 30px;
+  border: none;
+}
+
+.checkout .bag-group .icon.right {
+  width: 30px;
+}
+
+.checkout .bag-group .icon {
+  text-align: center;
+  width: 30px;
+  font-size: 1.4em;
+  color: #5eb95e;
 }

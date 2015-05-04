@@ -43,14 +43,14 @@
                     </div>
                     <div class="col-xs-4 text-center">
                       <p class="color-red" ng-if="i.attribute==1&&o.orderstatus=='0'">{{i.quantity}}个<span class="text-small">（约{{i.quantity*i.unitweight | weight}}）</span></p>
-                      <p class="color-red" ng-if="i.attribute==1&&o.orderstatus=='1'">{{i.quantity}}个<span class="text-small">（{{i.realweight | weight}}）</span></p>
+                      <p class="color-red" ng-if="i.attribute==1&&(o.orderstatus=='1'||o.orderstatus=='3')">{{i.quantity}}个<span class="text-small">（{{i.realweight | weight}}）</span></p>
                       <p class="color-red" ng-if="i.attribute==2">{{i.quantity*250 | weight}}</p>
                       <p class="color-red" ng-if="i.attribute==3">{{i.quantity}}{{i.unit}}</p>
                     </div>
                     <div class="col-xs-4 text-center">
                       <p class="color-red" ng-if="i.attribute==2||i.attribute==3">￥{{i.realprice}}</p>
                       <p class="color-red" ng-if="i.attribute==1&&o.orderstatus=='0'">约￥{{i.realprice}}</p>
-                      <p class="color-red" ng-if="i.attribute==1&&o.orderstatus=='1'">￥{{i.realprice}}</p>
+                      <p class="color-red" ng-if="i.attribute==1&&(o.orderstatus=='1'||o.orderstatus=='3')">￥{{i.realprice}}</p>
                     </div>
                   </li>
                 </ul>

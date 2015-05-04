@@ -19,8 +19,7 @@
 
 
     <div class="cart-items">
-      <p class="cart-tip"><i class="fa fa-star color-red">&nbsp;&nbsp;支持首次下单减免10元</i></p>
-      <p class="cart-tip" ng-show="shop.isdiscount==1 && shop.discount>0 "><i class="fa fa-star color-red">&nbsp;&nbsp;支持再次下单减免{{shop.discount}}元</i></p>
+      <p class="cart-tip" ng-show="shop.isbag==1"><i class="fa fa-star color-red">&nbsp;&nbsp;支持使用优惠券</i></p>
       <ul class="list-group">
         <li class="list-group-item container-fluid item" ng-repeat="i in items">
           <div class="row">
@@ -62,7 +61,7 @@
       <div class="row">
         <div class="col-xs-8">
           <p class="total">价格约：
-            <span class="color-red">{{totalPrice() | number:2}}元<span ng-show="shop.isdiscount==1" class="color-red">&nbsp;&nbsp;(-树窝优惠)</span> </span>
+            <span class="color-red">{{totalPrice() | number:2}}元<span ng-show="shop.isbag==1" class="color-red">&nbsp;&nbsp;(-优惠券金额)</span> </span>
           </p>
         </div>
         <div class="col-xs-4 text-right">

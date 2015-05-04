@@ -13,8 +13,8 @@ angular.module('shuwoApp')
       page.showFooter();
       page.setFooterNav('shop');
 
-      $scope.banner = configuration.imagePath + 'banner.jpg';
-      $scope.discountimg = configuration.imagePath + 'discount-new.png';
+      $scope.banner = configuration.imagePath + 'new-banner.jpg';
+      $scope.discountimg = configuration.imagePath + 'quan.png';
 
       $scope.locationLoading = true;
       $scope.$watch(function () {

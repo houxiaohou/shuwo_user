@@ -126,6 +126,17 @@ angular
           templateUrl: templateBase + 'views/address.edit.html',
           controller: 'AddressEditCtrl'
         })
+        .state('shuwo.bag', {
+          abstract: true,
+          url: '/bag',
+          template: '<ui-view />'
+        })
+        .state('shuwo.bag.list', {
+          url: '',
+          templateUrl: templateBase + 'views/bag.list.html',
+          controller: 'BagListCtrl'
+        })
+      ;
     }])
   .run(['$http', '$cookies', '$rootScope', function ($http, $cookies, $rootScope) {
     var token = $cookies.utoken;
