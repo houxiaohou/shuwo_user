@@ -39,9 +39,39 @@ angular.module('shuwoApp')
       $scope.lat = 0;
       $scope.lng = 0;
 
+      $scope.onlyDelivery = 0;
+
+      $scope.shopids = [10, 12, 13];
+
       $scope.choseDelivery = function (i) {
         $scope.ispickup = i;
       };
+
+      // 获取订单产品
+      var orderObject = storage.getItem('order');
+      if (!orderObject) {
+        // 显示没有产品
+        $state.go('shuwo.cart');
+      } else {
+        var obj = angular.fromJson(orderObject);
+        $scope.shopid = obj.shopid;
+
+        $scope.onlyDelivery = 1;
+        $scope.ispickup = 0;
+
+        shop.getShopById($scope.shopid).success(function (data) {
+          $scope.shop = data;
+        });
+
+        $scope.items = obj.items;
+        $scope.totalPrice = function () {
+          var total = 0.00;
+          for (var i in $scope.items) {
+            total += $scope.items[i].price;
+          }
+          return total;
+        };
+      }
 
       $scope.choseBag = function (b) {
         // 选择优惠券
@@ -58,7 +88,9 @@ angular.module('shuwoApp')
         bag.listUserAvailableBags($scope.type).success(function (data) {
           $scope.bags = data;
           if ($scope.bags.length > 0) {
-            $scope.selectedBag = $scope.bags[0];
+            if ($scope.onlyDelivery == 0) {
+              $scope.selectedBag = $scope.bags[0];
+            }
           }
         });
       };
@@ -91,29 +123,6 @@ angular.module('shuwoApp')
           $state.go('shuwo.address.add');
           $scope.addressLoading = false;
         });
-      }
-
-      // 获取订单产品
-      var orderObject = storage.getItem('order');
-      if (!orderObject) {
-        // 显示没有产品
-        $state.go('shuwo.cart');
-      } else {
-        var obj = angular.fromJson(orderObject);
-        $scope.shopid = obj.shopid;
-
-        shop.getShopById($scope.shopid).success(function (data) {
-          $scope.shop = data;
-        });
-
-        $scope.items = obj.items;
-        $scope.totalPrice = function () {
-          var total = 0.00;
-          for (var i in $scope.items) {
-            total += $scope.items[i].price;
-          }
-          return total;
-        };
       }
 
       // 送货时间
