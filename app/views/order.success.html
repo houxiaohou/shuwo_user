@@ -39,6 +39,23 @@
         </li>
       </ul>
     </div>
+    <div class="item-container">
+      <ul class="list-group">
+        <li class="list-group-item row" >
+          <div class="col-xs-4 text-center">
+            <p class="name">外送费</p>
+          </div>
+          <div class="col-xs-4 text-center">
+
+          </div>
+          <div class="col-xs-4 text-center">
+            <p class="color-red" ng-if="p.realprice()<shop.dlprice">8元</p>
+
+            <p class="color-red" ng-if="p.realprice()>=shop.dlprice">0元</p>
+          </div>
+        </li>
+      </ul>
+    </div>
     <div class="tip">
       <p><span class="color-red">*</span> 订单总金额约 <span class="color-red">￥{{order.beforeprice}}</span></p>
       <p ng-show="order.isfirst == 1 || order.discount>0"><span class="color-red">*</span> 优惠减免 <span class="color-red">￥{{order.discount}}</span></p>

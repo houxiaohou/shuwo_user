@@ -65,8 +65,8 @@
           </p>
         </div>
         <div class="col-xs-4 text-right">
-          <button class="btn btn-block btn-lg btn-success" ng-click="submit();" ng-disabled="totalPrice()<shop.dlprice">
-            <span ng-if="totalPrice()<shop.dlprice">差{{(shop.dlprice-totalPrice()) | number:2}}元</span>
+          <button class="btn btn-block btn-lg btn-success" ng-click="submit();" >
+            <span ng-if="totalPrice()<shop.dlprice">提交订单</span>
             <span ng-if="totalPrice()>=shop.dlprice">提交订单</span>
           </button>
         </div>
