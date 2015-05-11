@@ -71,7 +71,7 @@
 
           </div>
           <div class="col-xs-4">
-            <p class="color-red" ng-if="totalPrice()<shop.dlprice">8元</p>
+            <p class="color-red" ng-if="totalPrice()<shop.dlprice">5元</p>
 
             <p class="color-red" ng-if="totalPrice()>=shop.dlprice">0元</p>
           </div>
@@ -144,7 +144,7 @@
   <div class="cart-footer">
     <div class="row">
       <div class="col-xs-8">
-        <p class="total">价格约：<span class="color-red" ng-if="totalPrice()<shop.dlprice">{{totalPrice() + 8| price}}元</span><span class="color-red" ng-if="totalPrice()>=shop.dlprice">{{totalPrice()| price}}元</span><span class="small color-red" ng-if="selectedBag">（-{{selectedBag.amount}}元优惠券）</span></p>
+        <p class="total">价格约：<span class="color-red" ng-if="totalPrice()<shop.dlprice">{{totalPrice() + 5| price}}元</span><span class="color-red" ng-if="totalPrice()>=shop.dlprice">{{totalPrice()| price}}元</span><span class="small color-red" ng-if="selectedBag">（-{{selectedBag.amount}}元优惠券）</span></p>
       </div>
       <div class="col-xs-4 text-right" ng-show="!submitting">
         <button class="btn btn-block btn-lg btn-success" ng-click="submit();">提交订单</button>
