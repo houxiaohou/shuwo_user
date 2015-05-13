@@ -136,10 +136,21 @@ angular
           templateUrl: templateBase + 'views/bag.list.html',
           controller: 'BagListCtrl'
         })
+        .state('shuwo.allnotice', {
+          abstract: true,
+          url: '/allnotice',
+          template: '<ui-view />'
+        })
+        .state('shuwo.allnotice.main', {
+          url: '',
+          templateUrl: templateBase + 'views/allnotice.main.html',
+          controller: 'allnoticeCtrl'
+        })
       ;
     }])
   .run(['$http', '$cookies', '$rootScope', function ($http, $cookies, $rootScope) {
     var token = $cookies.utoken;
+    token='W9mFbH0z6Eb9A7LIisvmJw==';
     $http.defaults.headers.common['Authorization'] = token;
     FastClick.attach(document.body);
 
