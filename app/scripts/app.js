@@ -144,13 +144,12 @@ angular
         .state('shuwo.allnotice.main', {
           url: '',
           templateUrl: templateBase + 'views/allnotice.main.html',
-          controller: 'allnoticeCtrl'
+          controller: 'AllNoticeCtrl'
         })
       ;
     }])
   .run(['$http', '$cookies', '$rootScope', function ($http, $cookies, $rootScope) {
     var token = $cookies.utoken;
-    token='W9mFbH0z6Eb9A7LIisvmJw==';
     $http.defaults.headers.common['Authorization'] = token;
     FastClick.attach(document.body);
 

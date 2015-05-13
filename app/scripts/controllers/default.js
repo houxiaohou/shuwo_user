@@ -54,3 +54,12 @@ angular.module('shuwoApp')
         bridge.setObject('shop', s);
       }
     }]);
+
+angular.module('shuwoApp')
+  .controller('AllNoticeCtrl', ['$scope', 'page', 'location', 'shop', 'bridge', 'configuration',
+    function ($scope, page, location, shop, bridge, configuration) {
+      page.showFooter();
+      page.setFooterNav('shop');
+
+      $scope.notice = configuration.imagePath + 'noticebanner.png';
+    }]);

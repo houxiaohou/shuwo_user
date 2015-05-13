@@ -438,12 +438,16 @@ p {
   height: 40px;
   width: 85%;
 }
-
+.notice-tip{
+  padding: 0 10px;
+  font-size: 14px;
+  color: #878787;
+}
 .shop-detail .shop-cart {
   background: #5eb95e;
   position: fixed;
   left: 5px;
-  bottom: 50px;
+  bottom: 120px;
   border-radius: 999px;
   color: #ffffff;
   padding: 10px;

@@ -49,15 +49,15 @@
 
           </div>
           <div class="col-xs-4 text-center">
-            <p class="color-red" ng-if="p.realprice<shop.dlprice">5元</p>
+            <p class="color-red" ng-if="order.price<shop.dlprice">5元</p>
 
-            <p class="color-red" ng-if="p.realprice>=shop.dlprice">0元</p>
+            <p class="color-red" ng-if="order.price>=shop.dlprice">0元</p>
           </div>
         </li>
       </ul>
     </div>
     <div class="tip">
-      <p><span class="color-red">*</span> 订单总金额约 <span class="color-red">￥{{order.beforeprice}}</span></p>
+      <p><span class="color-red">*</span> 订单总金额约 <span class="color-red">￥{{order.beforeprice }}</span></p>
       <p ng-show="order.isfirst == 1 || order.discount>0"><span class="color-red">*</span> 优惠减免 <span class="color-red">￥{{order.discount}}</span></p>
       <p style=" font-weight:bold; font-size: 14px" ng-show="order.isfirst == 1 || order.discount>0"><span class="color-red">*</span> 实际总金额约 <span class="color-red">￥{{order.price}}</span></p>
       <p><span class="color-red">*</span> 店铺正在为您称重确定价格，我们将通过微信通知您具体重量和价格</p>
