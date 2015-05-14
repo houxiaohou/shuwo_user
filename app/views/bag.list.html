@@ -18,7 +18,7 @@
 
     <div class="bags-list" ng-show="!loading&&bags.length>0">
       <div class="bag-info" ng-class="{'used': (b.used==1||b.expired==1), 'shop': b.type==2}" ng-repeat="b in bags">
-        <img ng-src="{{expired_img}}" alt="" ng-show="b.expired==1" class="expired-img" />
+        <img ng-src="{{expired_img}}" alt="" ng-show="b.expired==1&&b.used==0" class="expired-img" />
         <img ng-src="{{used_img}}" alt="" ng-show="b.used==1" class="expired-img" />
         <div class="row">
           <div class="col-xs-4 amount">
@@ -27,6 +27,7 @@
             <img ng-src="{{green_10}}" alt="" ng-show="b.used==0&&b.expired==0&&b.amount==10" class="green-10"/>
             <img ng-src="{{grey_5}}" alt="" ng-show="(b.used==1||b.expired==1)&&b.amount==5" class="green-5"/>
             <img ng-src="{{grey_10}}" alt="" ng-show="(b.used==1||b.expired==1)&&b.amount==10" class="green-10 grey"/>
+
           </div>
           <div class="col-xs-8 info">
             <p class="title" ng-show="b.type==1">外送优惠券</p>
