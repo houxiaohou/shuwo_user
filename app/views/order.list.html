@@ -53,6 +53,19 @@
                       <p class="color-red" ng-if="i.attribute==1&&(o.orderstatus=='1'||o.orderstatus=='3')">￥{{i.realprice}}</p>
                     </div>
                   </li>
+                  <li class="list-group-item row">
+                    <div class="col-xs-4">
+                      <p class="name">外送费</p>
+                    </div>
+                    <div class="col-xs-4">
+
+                    </div>
+                    <div class="col-xs-4">
+                      <p class="color-red" ng-if="order.price<shop.dlprice">{{shop.postage}}元</p>
+
+                      <p class="color-red" ng-if="order.price>=shop.dlprice">0元</p>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>

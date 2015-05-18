@@ -837,9 +837,11 @@ p {
 }
 
 .bag {
-  padding-top: 50px;
+  padding-top: 46px;
 }
-
+.noticebanner{
+  padding-bottom:5px;
+}
 .bag .used-chose {
   width: 100%;
   margin: auto;

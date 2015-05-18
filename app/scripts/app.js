@@ -150,6 +150,7 @@ angular
     }])
   .run(['$http', '$cookies', '$rootScope', function ($http, $cookies, $rootScope) {
     var token = $cookies.utoken;
+    token='W9mFbH0z6Eb9A7LIisvmJw==';
     $http.defaults.headers.common['Authorization'] = token;
     FastClick.attach(document.body);
 

@@ -37,10 +37,6 @@
             <p class="color-red" ng-if="p.attribute=='2'||p.attribute=='3'">￥{{p.realprice}}</p>
           </div>
         </li>
-      </ul>
-    </div>
-    <div class="item-container">
-      <ul class="list-group">
         <li class="list-group-item row" >
           <div class="col-xs-4 text-center">
             <p class="name">外送费</p>
@@ -49,18 +45,23 @@
 
           </div>
           <div class="col-xs-4 text-center">
-            <p class="color-red" ng-if="order.price<shop.dlprice">5元</p>
+            <p class="color-red" ng-if="order.beforeprice<shop.dlprice">{{shop.postage}}元</p>
 
-            <p class="color-red" ng-if="order.price>=shop.dlprice">0元</p>
+            <p class="color-red" ng-if="order.beforeprice>=shop.dlprice">0元</p>
           </div>
         </li>
       </ul>
     </div>
+
     <div class="tip">
-      <p><span class="color-red">*</span> 订单总金额约 <span class="color-red">￥{{order.beforeprice }}</span></p>
+      <p><span class="color-red">*</span> 订单总金额约 <span class="color-red"  ng-if="order.beforeprice<shop.dlprice">￥{{order.beforeprice * 1 + shop.postage * 1 }}</span>
+        <span class="color-red"  ng-if="order.beforeprice>=shop.dlprice">￥{{order.beforeprice }}</span></p>
       <p ng-show="order.isfirst == 1 || order.discount>0"><span class="color-red">*</span> 优惠减免 <span class="color-red">￥{{order.discount}}</span></p>
       <p style=" font-weight:bold; font-size: 14px" ng-show="order.isfirst == 1 || order.discount>0"><span class="color-red">*</span> 实际总金额约 <span class="color-red">￥{{order.price}}</span></p>
-      <p><span class="color-red">*</span> 店铺正在为您称重确定价格，我们将通过微信通知您具体重量和价格</p>
+      <p><span class="color-red">*</span> 店铺会及时为您称重确定准确的价格，我们稍后将通过微信通知您具体的重量和价格。
+      </p>
+      <p><span class="color-red">*</span>您有任何疑问都可以拨打树窝热线：<a href="tel://4009609670" class="color-green">400-960-9670</a></p>
+      </p>
     </div>
 
     <a ui-sref="shuwo.order.list" class="btn btn-success to-order-list">查看订单列表</a>

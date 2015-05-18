@@ -59,10 +59,6 @@
             <p class="color-red" ng-if="i.attribute=='2' || i.attribute=='3'">{{i.price | number:2}}元</p>
           </div>
         </li>
-      </ul>
-    </div>
-    <div class="postprice ">
-      <ul class="list-group">
         <li class="list-group-item row">
           <div class="col-xs-4">
             <p class="name">外送费</p>
@@ -71,13 +67,14 @@
 
           </div>
           <div class="col-xs-4">
-            <p class="color-red" ng-if="totalPrice()<shop.dlprice">5元</p>
+            <p class="color-red" ng-if="totalPrice()<shop.dlprice">{{shop.postage}}元</p>
 
             <p class="color-red" ng-if="totalPrice()>=shop.dlprice">0元</p>
           </div>
         </li>
       </ul>
     </div>
+
     <div class="panel-group bag-group" bs-collapse ng-model="o" ng-show="bags.length>0&&shop.isbag==1">
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -144,7 +141,7 @@
   <div class="cart-footer">
     <div class="row">
       <div class="col-xs-8">
-        <p class="total">价格约：<span class="color-red" ng-if="totalPrice()<shop.dlprice">{{totalPrice() + 5| price}}元</span><span class="color-red" ng-if="totalPrice()>=shop.dlprice">{{totalPrice()| price}}元</span><span class="small color-red" ng-if="selectedBag">（-{{selectedBag.amount}}元优惠券）</span></p>
+        <p class="total">价格约：<span class="color-red" ng-if="totalPrice()<shop.dlprice">{{totalPrice() + shop.postage * 1 | price}}元</span><span class="color-red" ng-if="totalPrice()>=shop.dlprice">{{totalPrice()| price}}元</span><span class="small color-red" ng-if="selectedBag">（-{{selectedBag.amount}}元优惠券）</span></p>
       </div>
       <div class="col-xs-4 text-right" ng-show="!submitting">
         <button class="btn btn-block btn-lg btn-success" ng-click="submit();">提交订单</button>

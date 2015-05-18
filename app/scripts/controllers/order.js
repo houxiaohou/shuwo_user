@@ -84,7 +84,6 @@ angular.module('shuwoApp')
       page.setFooterNav('order');
 
       var orderId = $stateParams.orderId;
-
       $scope.loading = true;
 
       order.getOrderById(orderId).success(function (data) {
