@@ -10,16 +10,13 @@
   </p>
 
   <div ng-show="!loading" class="main">
+    <span class="delivery-title">选择送货方式：</span>
 
-    <div ng-show="onlyDelivery==0">
-      <span class="delivery-title">选择送货方式：</span>
-
-      <div class="btn-group delivery-chose" role="group">
-        <a href="javascript:;" class="btn btn-default btn-sm" ng-class="{'btn-warning': ispickup==1}"
-           ng-click="choseDelivery(1);" role="button">到店自提</a>
-        <a href="javascript:;" class="btn btn-default btn-sm" ng-class="{'btn-warning': ispickup==0}"
-           ng-click="choseDelivery(0);" role="button">送货上门</a>
-      </div>
+    <div class="btn-group delivery-chose" role="group">
+      <a href="javascript:;" class="btn btn-default btn-sm" ng-class="{'btn-warning': ispickup==1}"
+         ng-click="choseDelivery(1);" role="button">到店自提</a>
+      <a href="javascript:;" class="btn btn-default btn-sm" ng-class="{'btn-warning': ispickup==0}"
+         ng-click="choseDelivery(0);" role="button">送货上门</a>
     </div>
     <div class="address-container container-fluid" ui-sref="shuwo.address.list" ng-show="ispickup==0">
       <p class="loading text-center" ng-show="addressLoading"><i class="fa fa-spinner fa-spin"></i></p>
@@ -59,22 +56,8 @@
             <p class="color-red" ng-if="i.attribute=='2' || i.attribute=='3'">{{i.price | number:2}}元</p>
           </div>
         </li>
-        <li class="list-group-item row">
-          <div class="col-xs-4">
-            <p class="name">外送费</p>
-          </div>
-          <div class="col-xs-4">
-
-          </div>
-          <div class="col-xs-4">
-            <p class="color-red" ng-if="totalPrice()<shop.dlprice">{{shop.postage}}元</p>
-
-            <p class="color-red" ng-if="totalPrice()>=shop.dlprice">0元</p>
-          </div>
-        </li>
       </ul>
     </div>
-
     <div class="panel-group bag-group" bs-collapse ng-model="o" ng-show="bags.length>0&&shop.isbag==1">
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -131,17 +114,17 @@
                   ng-options="time as time.label for time in times"></select>
         </div>
       </div>
-      <p class="title">订单留言</p>
 
+      <p class="title"><input type="checkbox" ng-model="agree" style="float: left;" >&nbsp我需要代购</p>
       <div class="container-fluid notes-container">
-        <textarea class="form-control" cols="30" rows="2" placeholder="填写订单留言" ng-model="notes"></textarea>
+        <textarea class="form-control" cols="30" rows="2" placeholder="买零食、买水、买烟，想买什么我们帮你带！（代购费3元）" ng-model="notes" ng-disabled="!agree" ></textarea>
       </div>
     </div>
   </div>
   <div class="cart-footer">
     <div class="row">
       <div class="col-xs-8">
-        <p class="total">价格约：<span class="color-red" ng-if="totalPrice()<shop.dlprice">{{totalPrice() + shop.postage * 1 | price}}元</span><span class="color-red" ng-if="totalPrice()>=shop.dlprice">{{totalPrice()| price}}元</span><span class="small color-red" ng-if="selectedBag">（-{{selectedBag.amount}}元优惠券）</span></p>
+        <p class="total">价格约：<span class="color-red">{{totalPrice() | price}}元</span><span class="small color-red" ng-if="agree">（+{{shop.postage}} 元代购费）</span><span class="small color-red" ng-if="selectedBag">（-{{selectedBag.amount}}元优惠券）</span></p>
       </div>
       <div class="col-xs-4 text-right" ng-show="!submitting">
         <button class="btn btn-block btn-lg btn-success" ng-click="submit();">提交订单</button>

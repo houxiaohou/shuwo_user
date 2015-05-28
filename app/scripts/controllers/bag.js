@@ -19,6 +19,9 @@ angular.module('shuwoApp')
     $scope.grey_10 = configuration.imagePath + 'grey-10.png';
     $scope.expired_img = configuration.imagePath + 'expired.png';
     $scope.used_img = configuration.imagePath + 'used.png';
+    $scope.green_2 = configuration.imagePath + 'green-2.png';
+
+    $scope.grey_2 = configuration.imagePath + 'grey-2.png';
 
     $scope.loading = true;
     $scope.used = 0;

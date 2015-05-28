@@ -27,24 +27,28 @@ angular.module('shuwoApp')
         }
       });
 
-      $scope.notes = '';
+      $scope.notes = "";
+
       $scope.addressLoading = true;
       $scope.submitting = false;
-      $scope.ispickup = 1;
+      $scope.ispickup = 0;
       $scope.bags = [];
       $scope.selectedBag = undefined;
       $scope.o = -1;
-      $scope.type = 2;
+      $scope.type = 1;
 
       $scope.lat = 0;
       $scope.lng = 0;
 
       $scope.onlyDelivery = 0;
 
-      $scope.shopids = [15];
+      $scope.shopids = [16];
 
       $scope.choseDelivery = function (i) {
         $scope.ispickup = i;
+      };
+      $scope.clean = function () {
+        $scope.notes = "";
       };
 
       // 获取订单产品
@@ -107,7 +111,11 @@ angular.module('shuwoApp')
           $scope.listUserBags();
         }
       });
-
+      $scope.$watch('agree', function (agree) {
+        if (agree == false) {
+            $scope.notes = "";
+        }
+      });
       // 获取默认送货地址
       if (bridge.getAddress()) {
         $scope.address = bridge.getAddress();
@@ -175,6 +183,7 @@ angular.module('shuwoApp')
           orderdetail: JSON.stringify(orderdetail),
           dltime: $scope.selectedTime.label,
           notes: $scope.notes,
+
           ispickup: $scope.ispickup,
           lat: $scope.lat,
           lng: $scope.lng

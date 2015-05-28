@@ -23,7 +23,8 @@
         </div>
         <div class="row text-center price">
           <div class="col-xs-12">
-            <p>订单金额：<span class="color-red"><span ng-if="o.orderstatus==0">约</span>￥{{o.price}}<span class="color-red text-small" ng-show="o.isfirst == 1 || o.discount>0"> (已优惠{{o.discount}}元)</span></span><span class="color-grey text-small">（共{{o.productdetail.length}}种水果）</span></p>
+            <p ng-if="o.notes.length>0">订单金额：<span class="color-red"><span ng-if="o.orderstatus==0">约</span>￥{{o.price*1 + 3}}<span class="color-red text-small" ng-show="o.isfirst == 1 || o.discount>0"> (已优惠{{o.discount}}元)</span></span><span class="color-grey text-small">（共{{o.productdetail.length}}种水果）</span></p>
+            <p ng-if="!o.notes.length>0">订单金额：<span class="color-red"><span ng-if="o.orderstatus==0">约</span>￥{{o.price }}<span class="color-red text-small" ng-show="o.isfirst == 1 || o.discount>0"> (已优惠{{o.discount}}元)</span></span><span class="color-grey text-small">（共{{o.productdetail.length}}种水果）</span></p>
           </div>
         </div>
         <div class="panel-group" bs-collapse ng-model="o.open">
@@ -53,17 +54,17 @@
                       <p class="color-red" ng-if="i.attribute==1&&(o.orderstatus=='1'||o.orderstatus=='3')">￥{{i.realprice}}</p>
                     </div>
                   </li>
-                  <li class="list-group-item row">
-                    <div class="col-xs-4">
+                  <li class="list-group-item row" ng-if="o.notes.length>0" >
+                    <div class="col-xs-4 text-center">
                       <p class="name">外送费</p>
                     </div>
-                    <div class="col-xs-4">
+                    <div class="col-xs-4 text-center">
 
                     </div>
-                    <div class="col-xs-4">
-                      <p class="color-red" ng-if="order.price<shop.dlprice">{{shop.postage}}元</p>
+                    <div class="col-xs-4 text-center">
 
-                      <p class="color-red" ng-if="order.price>=shop.dlprice">0元</p>
+
+                      <p class="color-red" >3元</p>
                     </div>
                   </li>
                 </ul>
