@@ -115,16 +115,29 @@
         </div>
       </div>
 
-      <p class="title"><input type="checkbox" ng-model="agree" style="float: left;" >&nbsp我需要代购</p>
+      <div class="panel panel-default" style=" margin:20px 0 10px 0!important;">
+        <div class="panel-heading daigou">
+          <div class="row" bs-collapse-toggle>
+            <div class="col-xs-4" style="font-size: 14px;">我需要代购 </div>
+            <div class="col-xs-4 text-center">
+
+            </div>
+            <div class="col-xs-4 text-right color-green">
+              <input type="checkbox" ng-model="agree" style="float: right;width:20px;height:20px;" >
+            </div>
+          </div>
+        </div>
+        </div>
+      <p class="daigoutishi"><i class="fa fa-leaf color-green"></i>买零食、买水、买烟，想买什么我们帮你带（代购费3元）</p>
       <div class="container-fluid notes-container">
-        <textarea class="form-control" cols="30" rows="2" placeholder="买零食、买水、买烟，想买什么我们帮你带！（代购费3元）" ng-model="notes" ng-disabled="!agree" ></textarea>
+        <textarea class="form-control" cols="30" rows="3" placeholder="在这里输入您需要代购的物品哟~" ng-model="notes" ng-show="agree" ></textarea>
       </div>
     </div>
   </div>
   <div class="cart-footer">
     <div class="row">
       <div class="col-xs-8">
-        <p class="total">价格约：<span class="color-red">{{totalPrice() | price}}元</span><span class="small color-red" ng-if="agree">（+{{shop.postage}} 元代购费）</span><span class="small color-red" ng-if="selectedBag">（-{{selectedBag.amount}}元优惠券）</span></p>
+        <p class="total">价格约：<span class="color-red">{{totalPrice() | price}}元</span><span class="small color-red" ng-if="selectedBag">（-{{selectedBag.amount}}元优惠券）</span></p>
       </div>
       <div class="col-xs-4 text-right" ng-show="!submitting">
         <button class="btn btn-block btn-lg btn-success" ng-click="submit();">提交订单</button>
