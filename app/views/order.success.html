@@ -58,7 +58,8 @@
       <p ng-show="order.isfirst == 1 || order.discount>0"><span class="color-red">*</span> 优惠减免 <span class="color-red">￥{{order.discount}}</span></p>
       <p style=" font-weight:bold; font-size: 14px" ng-show="order.isfirst == 1 || order.discount>0&&order.notes.length>0"><span class="color-red">*</span> 实际总金额约 <span class="color-red">￥{{order.price *1 +3}}</span></p>
       <p style=" font-weight:bold; font-size: 14px" ng-show="order.isfirst == 1 || order.discount>0&&!order.notes.length>0"><span class="color-red">*</span> 实际总金额约 <span class="color-red">￥{{order.price}}</span></p>
-      <p><span class="color-red">*</span> 店铺会及时为您称重确定准确的价格，我们稍后将通过微信通知您具体的重量和价格。</p>
+      <p><span class="color-red" ng-if="shop.shopid !== '114'">*</span> 店铺会及时为您称重确定准确的价格，我们稍后将通过微信通知您具体的重量和价格。</p>
+      <p><span class="color-red" ng-if="shop.shopid === '114'">*</span> 树窝代购员正在待命，即将前往店铺购买，请您耐心等待：）</p>
       <p><span class="color-red">*</span> 您有任何疑问都可以拨打树窝热线：<a href="tel://4009609670" class="color-green">400-960-9670</a></p>
     </div>
 

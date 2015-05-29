@@ -5,12 +5,14 @@
     <span class="location-change">[切换地址]</span>
   </a>
 
-  <div class="default-banner">
-    <a href="#/allnotice"><img ng-src="{{banner}}" alt="" width="100%"/></a>
+  <div class="default-banner" >
+    <a href="#/allnotice" ng-if="shops[0].shopid !== '114'&&shops[0].shopid !== '115'"><img ng-src="{{banner}}" alt="" width="100%"/></a>
+    <a href="#/allnotice" ng-if="shops[0].shopid === '114'||shops[0].shopid === '115'"><img ng-src="{{banner1}}" alt="" width="100%"/></a>
   </div>
 
   <div class="default-list">
-    <p class="title">附近的水果店（点击水果店购买）</p>
+    <p class="title" ng-if="shops[0].shopid !== '114'">附近的水果店（点击水果店购买）</p>
+    <p class="title" ng-if="shops[0].shopid === '114'">附近店铺（点击店铺购买）</p>
     <p class="text-center" ng-show="shopLoading">
       <i class="fa fa-spinner fa-spin"></i>
     </p>
@@ -22,7 +24,8 @@
           </div>
           <div class="col-sm-9 col-lg-9 col-md-9 col-xs-9 info">
             <p class="name">{{s.spn}} <img ng-src="{{discountimg}}" class="discountimg" ng-show="{{s.isbag==1}}"/>   <span class="text-small color-red">{{s.distance | distance}}</span> </p>
-            <p class="notice">通告：{{s.shopnotice}}</p>
+            <p class="notice" >通告：{{s.shopnotice}}</p>
+
           </div>
         </div>
         <div class="arrow">
@@ -33,6 +36,7 @@
     <div ng-show="shops.length==0&&!shopLoading">
       <p class="text-center">附近还没有水果店</p>
     </div>
-    <p class="default-tip"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;树窝水果精挑细选您身边的优质水果店，下单后货到付款，水果当面验收，让您足不出户享受健康生活.</p>
+    <p class="default-tip" ng-if="shops[0].shopid !== '114'&&shops[0].shopid !== '115'"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;树窝水果精挑细选您身边的优质水果店，下单后货到付款，水果当面验收，让您足不出户享受健康生活.</p>
+    <p class="default-tip" ng-if="shops[0].shopid === '114'||shops[0].shopid === '115'"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;树窝水果精挑细选您身边的优质店铺，下单后货到付款，物品当面验收。不想出门？我们送！</p>
   </div>
 </div>

@@ -24,9 +24,9 @@
 
           <p class="description">{{shop.spadr}}</p>
 
-          <p class="color-red text-small">满{{shop.dlprice}}元免运费</p>
+          <p class="color-red text-small" ng-show="shop.shopid !== '114'">满{{shop.dlprice}}元免运费</p> <p class="color-red text-small" ng-show="shop.shopid === '114'">满10元免运费（未满10元收3元运费）</p>
           <p class="description">营业时间：8:00—22:00</p>
-      </div>
+        </div>
         <div class="col-xs-2 distance-container text-center">
           <p class="p1"><i class="fa fa-map-marker"></i></p>
           <p class="p2">距离</p>
@@ -35,8 +35,8 @@
       </div>
     </div>
     <div class="shop-board">
-    <p><span class="color-red"><i class="fa fa-bullhorn"></i> 店铺公告 </span> {{shop.notice}}</p>
-  </div>
+      <p><span class="color-red"><i class="fa fa-bullhorn"></i> 店铺公告 </span> {{shop.notice}}</p>
+    </div>
     <div class="shop-discount" ng-show="shop.isbag=='1'">
       <p><img ng-src="{{discountimg}}"  class="discountimg" style="width: 14px;"/><span class="color-red">&nbsp;&nbsp;&nbsp;&nbsp;本店支持优惠券</span>
     </div>

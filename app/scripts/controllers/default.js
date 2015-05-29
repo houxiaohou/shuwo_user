@@ -14,6 +14,7 @@ angular.module('shuwoApp')
       page.setFooterNav('shop');
 
       $scope.banner = configuration.imagePath + 'new-banner.jpg';
+      $scope.banner1 = configuration.imagePath + 'jiu-banner.png';
       $scope.discountimg = configuration.imagePath + 'quan.png';
 
       $scope.locationLoading = true;
