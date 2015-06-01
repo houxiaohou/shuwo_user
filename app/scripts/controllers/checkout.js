@@ -42,7 +42,7 @@ angular.module('shuwoApp')
 
       $scope.onlyDelivery = 0;
 
-      $scope.shopids = [16];
+      $scope.shopids = [15];
 
       $scope.choseDelivery = function (i) {
         $scope.ispickup = i;

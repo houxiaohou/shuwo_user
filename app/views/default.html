@@ -6,13 +6,16 @@
   </a>
 
   <div class="default-banner" >
-    <a href="#/allnotice" ng-if="shops[0].shopid !== '114'&&shops[0].shopid !== '115'"><img ng-src="{{banner}}" alt="" width="100%"/></a>
-    <a href="#/allnotice" ng-if="shops[0].shopid === '114'||shops[0].shopid === '115'"><img ng-src="{{banner1}}" alt="" width="100%"/></a>
+    <a href="#/allnotice" ng-if="shops[0].shopid !== '114'&&shops[0].shopid !== '115'&&shops[0].shopid !== '116'&&shops[0].shopid !== '117'&&shops[0].shopid !== '119'&&shops[0].shopid !== '120'&&shops[0].shopid !== '121'&&shops[0].shopid !== '122'&&shops[0].shopid !== '123'"><img ng-src="{{banner}}" alt="" width="100%"/></a>
+
+    <a  ng-if="shops[0].shopid === '114'||shops[0].shopid === '115'||shops[0].shopid === '116'||shops[0].shopid === '117'||shops[0].shopid === '119'||shops[0].shopid === '120'||shops[0].shopid === '121'||shops[0].shopid === '122'||shops[0].shopid === '123'"><img ng-src="{{banner1}}" alt="" width="100%"/></a>
+    <a  href="#/shop/114" ng-if="shops[0].shopid === '114'||shops[0].shopid === '115'||shops[0].shopid === '116'||shops[0].shopid === '117'||shops[0].shopid === '119'||shops[0].shopid === '120'||shops[0].shopid === '121'||shops[0].shopid === '122'||shops[0].shopid === '123'"><img ng-src="{{banner2}}" alt="" width="100%" style="margin:1px 0 0 0;"/></a>
+
   </div>
 
-  <div class="default-list">
-    <p class="title" ng-if="shops[0].shopid !== '114'">附近的水果店（点击水果店购买）</p>
-    <p class="title" ng-if="shops[0].shopid === '114'">附近店铺（点击店铺购买）</p>
+  <div class="default-list" style="margin:2px 0 0 0;">
+    <p class="title" ng-if="shops[0].shopid !== '114'&&shops[0].shopid !== '115'&&shops[0].shopid !== '116'&&shops[0].shopid !== '117'&&shops[0].shopid !== '119'&&shops[0].shopid !== '120'&&shops[0].shopid !== '121'&&shops[0].shopid !== '122'&&shops[0].shopid !== '123'">附近的水果店（点击水果店购买）</p>
+
     <p class="text-center" ng-show="shopLoading">
       <i class="fa fa-spinner fa-spin"></i>
     </p>
@@ -23,7 +26,7 @@
             <img ng-src="{{s.simgurl}}?imageView2/1/w/80/h/80" alt="" class="avatar"/>
           </div>
           <div class="col-sm-9 col-lg-9 col-md-9 col-xs-9 info">
-            <p class="name">{{s.spn}} <img ng-src="{{discountimg}}" class="discountimg" ng-show="{{s.isbag==1}}"/>   <span class="text-small color-red">{{s.distance | distance}}</span> </p>
+            <p class="name">{{s.spn}} <img ng-src="{{discountimg}}" class="discountimg" ng-show="{{s.isbag==1}}"/>   </p>
             <p class="notice" >通告：{{s.shopnotice}}</p>
 
           </div>
@@ -36,7 +39,7 @@
     <div ng-show="shops.length==0&&!shopLoading">
       <p class="text-center">附近还没有水果店</p>
     </div>
-    <p class="default-tip" ng-if="shops[0].shopid !== '114'&&shops[0].shopid !== '115'"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;树窝水果精挑细选您身边的优质水果店，下单后货到付款，水果当面验收，让您足不出户享受健康生活.</p>
-    <p class="default-tip" ng-if="shops[0].shopid === '114'||shops[0].shopid === '115'"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;树窝水果精挑细选您身边的优质店铺，下单后货到付款，物品当面验收。不想出门？我们送！</p>
+    <p class="default-tip" ng-if="shops[0].shopid !== '114'&&shops[0].shopid !== '115'&&shops[0].shopid !== '116'&&shops[0].shopid !== '117'&&shops[0].shopid !== '119'&&shops[0].shopid !== '120'&&shops[0].shopid !== '121'&&shops[0].shopid !== '122'&&shops[0].shopid !== '123'"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;树窝水果精挑细选您身边的优质水果店，下单后货到付款，水果当面验收，让您足不出户享受健康生活.</p>
+    <p class="default-tip" ng-if="shops[0].shopid === '114'||shops[0].shopid === '115'||shops[0].shopid === '116'||shops[0].shopid === '117'||shops[0].shopid === '119'||shops[0].shopid === '120'||shops[0].shopid === '121'||shops[0].shopid === '122'||shops[0].shopid === '123'"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;树窝水果精挑细选您身边的优质店铺，下单后货到付款，物品当面验收。不想出门？我们送！</p>
   </div>
 </div>

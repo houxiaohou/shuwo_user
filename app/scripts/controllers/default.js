@@ -16,7 +16,7 @@ angular.module('shuwoApp')
       $scope.banner = configuration.imagePath + 'new-banner.jpg';
       $scope.banner1 = configuration.imagePath + 'jiu-banner.png';
       $scope.discountimg = configuration.imagePath + 'quan.png';
-
+      $scope.banner2 = configuration.imagePath + 'jiu-banner1.jpg';
       $scope.locationLoading = true;
       $scope.$watch(function () {
         return location.getStoredLocation();

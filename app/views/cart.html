@@ -14,7 +14,8 @@
   <div ng-show="!productLoading&&!shopLoading&&items.length>0">
     <div class="shop-info">
       <img ng-src="{{shop.simgurl}}?imageView2/1/w/80/h/80" alt=""/>
-      <p >{{shop.spn}} <span ng-show="shop.shopid !== '114'">（满{{shop.dlprice}}元免费送货）</span> <span ng-show="shop.shopid == '114'" style="font-size:10px;color:#eb6100;">满10元免运费（未满10元收3元运费）</span></p>
+      <p >{{shop.spn}} <span ng-show="shop.shopid !== '114'&&shop.shopid !== '115'&&shop.shopid !== '116'&&shop.shopid !== '117'&&shop.shopid !== '119'&&shop.shopid !== '120'&&shop.shopid !== '121'&&shop.shopid !== '122'&&shop.shopid !== '123'">（满{{shop.dlprice}}元免费送货）</span>
+        <span ng-show="shop.shopid == '114'||shop.shopid === '115'||shop.shopid === '116'||shop.shopid === '117'||shop.shopid === '119'||shop.shopid === '120'||shop.shopid === '121'||shop.shopid === '122'||shop.shopid === '123'" style="font-size:10px;color:#eb6100;">满10元免运费（未满10元收3元运费）</span></p>
 
     </div>
 
@@ -56,8 +57,8 @@
           </div>
         </li>
       </ul>
-      <p class="cart-tip" ng-show="shop.shopid !== '114'"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;我们的送果员称重后会反馈给您准确的重量和价格，亲在收货时按照实际价格支付即可</p>
-      <p class="cart-tip" ng-show="shop.shopid !== '114'"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;如果有品质较差的水果，您可以当面拒收，送果员会减去相应的价格</p>
+      <p class="cart-tip" ng-show="shop.shopid !== '114'&&shop.shopid !== '115'&&shop.shopid !== '116'&&shop.shopid !== '117'&&shop.shopid !== '119'&&shop.shopid !== '120'&&shop.shopid !== '121'&&shop.shopid !== '122'&&shop.shopid !== '123'"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;我们的送果员称重后会反馈给您准确的重量和价格，亲在收货时按照实际价格支付即可</p>
+      <p class="cart-tip" ng-show="shop.shopid !== '114'&&shop.shopid !== '115'&&shop.shopid !== '116'&&shop.shopid !== '117'&&shop.shopid !== '119'&&shop.shopid !== '120'&&shop.shopid !== '121'&&shop.shopid !== '122'&&shop.shopid !== '123'"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;如果有品质较差的水果，您可以当面拒收，送果员会减去相应的价格</p>
     </div>
     <div class="cart-footer">
       <div class="row">
