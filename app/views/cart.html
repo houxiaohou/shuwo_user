@@ -14,8 +14,8 @@
   <div ng-show="!productLoading&&!shopLoading&&items.length>0">
     <div class="shop-info">
       <img ng-src="{{shop.simgurl}}?imageView2/1/w/80/h/80" alt=""/>
-      <p >{{shop.spn}} <span ng-show="shop.shopid !== '114'&&shop.shopid !== '115'&&shop.shopid !== '116'&&shop.shopid !== '117'&&shop.shopid !== '119'&&shop.shopid !== '120'&&shop.shopid !== '121'&&shop.shopid !== '122'&&shop.shopid !== '123'">（满{{shop.dlprice}}元免费送货）</span>
-        <span ng-show="shop.shopid == '114'||shop.shopid === '115'||shop.shopid === '116'||shop.shopid === '117'||shop.shopid === '119'||shop.shopid === '120'||shop.shopid === '121'||shop.shopid === '122'||shop.shopid === '123'" style="font-size:10px;color:#eb6100;">满10元免运费（未满10元收3元运费）</span></p>
+      <p >{{shop.spn}} <span>（满{{shop.dlprice}}元免费送货）</span>
+      </p>
 
     </div>
 
@@ -32,7 +32,7 @@
                 <p class="name" ng-if="i.product.attribute=='1'">{{i.product.productname}}<small>x{{i.num}}个</small></p>
                 <p class="name" ng-if="i.product.attribute=='2'">{{i.product.productname}}</p>
                 <p class="name" ng-if="i.product.attribute=='3'">{{i.product.productname}}<small>x{{i.num}}{{i.unit}}</small></p>
-                <div class="number">
+                <div class="number" ng-show="i.product.productname !=='到十分'">
                   <i class="fa fa-minus-circle" ng-click="minus(i);"></i>
                   <span>{{i.num}}</span>
                   <i class="fa fa-plus-circle" ng-click="plus(i);"></i>

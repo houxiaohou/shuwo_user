@@ -23,12 +23,11 @@
       <a class="list-group-item container-fluid" ng-click="toShop(s);" ui-sref="shuwo.shop.detail({shopId:s.shopid})" ng-repeat="s in shops">
         <div class="row">
           <div class="col-sm-3 col-lg-3 col-md-3 col-xs-3 avatar">
-            <img ng-src="{{s.simgurl}}?imageView2/1/w/80/h/80" alt="" class="avatar"/>
+            <img ng-src="{{s.simgurl}}?imageView2/1/w/200/h/200" alt="" class="avatar"/>
           </div>
           <div class="col-sm-9 col-lg-9 col-md-9 col-xs-9 info">
             <p class="name">{{s.spn}} <img ng-src="{{discountimg}}" class="discountimg" ng-show="{{s.isbag==1}}"/>   </p>
             <p class="notice" >通告：{{s.shopnotice}}</p>
-
           </div>
         </div>
         <div class="arrow">

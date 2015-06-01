@@ -183,7 +183,6 @@ angular.module('shuwoApp')
           orderdetail: JSON.stringify(orderdetail),
           dltime: $scope.selectedTime.label,
           notes: $scope.notes,
-
           ispickup: $scope.ispickup,
           lat: $scope.lat,
           lng: $scope.lng

@@ -32,7 +32,7 @@ angular.module('shuwoApp')
       // location变化的话重新获取店铺
       $scope.$watch('location', function (newVal, oldVal) {
         if (newVal !== undefined) {
-          shop.listShopsNearBy(0, 5).success(function (data) {
+          shop.listShopsNearBy(0, 9).success(function (data) {
             $scope.shops = data;
             for (var i in $scope.shops) {
               if ($scope.shops[i]['notice'].length > 28) {
