@@ -24,8 +24,8 @@
 
           <p class="description">{{shop.spadr}}</p>
 
-          <p class="color-red text-small" ng-show="shop.shopid !== '114'&&shop.shopid !== '115'&&shop.shopid !== '116'&&shop.shopid !== '117'&&shop.shopid !== '119'&&shop.shopid !== '120'&&shop.shopid !== '121'&&shop.shopid !== '122'&&shop.shopid !== '123'">满{{shop.dlprice}}元免运费</p>
-          <p class="color-red text-small" ng-show="shop.shopid === '114'||shop.shopid === '115'||shop.shopid === '116'||shop.shopid === '117'||shop.shopid === '119'||shop.shopid === '120'||shop.shopid === '121'||shop.shopid === '122'||shop.shopid === '123'">满10元免运费（未满10元收3元运费）</p>
+          <p class="color-red text-small" >满{{shop.dlprice}}元免运费</p>
+
           <p class="description">营业时间：8:00—22:00</p>
         </div>
         <div class="col-xs-2 distance-container text-center">
@@ -59,12 +59,9 @@
               <p class="text-small">已加入购物车</p>
               <p class="text-small">请到购物车确认数量</p>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="shop-checkout text-center">
-      <button class="btn btn-success" ui-sref="shuwo.cart" ng-disabled="cart.items().length==0">挑好了，去选数量</button>
+      <button class="btn btn-success" ui-sref="shuwo.cart" ng-disabled="cart.items().length==0" ng-if="shop.shopid !== '119'&&shop.shopid !== '121'&&shop.shopid !== '122'">挑好了，去选数量</button>
+      <button class="btn btn-success" ui-sref="shuwo.cart" ng-disabled="cart.items().length>=0"  ng-if="shop.shopid === '119'||shop.shopid === '121'||shop.shopid === '122'">暂停营业</button>
     </div>
     <div class="shop-cart" ui-sref="shuwo.cart">
       <i class="fa fa-shopping-cart fa-2x"></i>

@@ -14,7 +14,7 @@ angular.module('shuwoApp')
       page.setFooterNav('shop');
 
       $scope.discountimg = configuration.imagePath + 'quan.png';
-
+      $scope.isopen = 1;
       var shopId = $stateParams.shopId;
       // 先从bridge重获取shop
       var object = bridge.getObject();
@@ -44,10 +44,14 @@ angular.module('shuwoApp')
       // 购物车功能
       $scope.productCart = function (product) {
         // 从购物车添加或移除商品
+
+      if( $scope.shop.isopen == "1" ){
         if (cart.isInCart(product)) {
           cart.removeItem(product);
         } else {
           cart.addItem(product);
-        }
+        }} else{
+        return;
+      }
       };
     }]);

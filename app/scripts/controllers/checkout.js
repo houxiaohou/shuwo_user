@@ -92,9 +92,9 @@ angular.module('shuwoApp')
         bag.listUserAvailableBags($scope.type).success(function (data) {
           $scope.bags = data;
           if ($scope.bags.length > 0) {
-
+            if ($scope.onlyDelivery == 0) {
               $scope.selectedBag = $scope.bags[0];
-
+            }
           }
         });
       };
