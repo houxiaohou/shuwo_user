@@ -26,7 +26,7 @@
             <img ng-src="{{s.simgurl}}?imageView2/1/w/200/h/200" alt="" class="avatar"/>
           </div>
           <div class="col-sm-9 col-lg-9 col-md-9 col-xs-9 info">
-            <p class="name">{{s.spn}} <img ng-src="{{discountimg}}" class="discountimg" ng-show="{{s.isbag==1}}"/>   </p>
+            <p class="name">{{s.spn}} <img ng-src="{{discountimg}}" class="discountimg" ng-show="{{s.isbag==1}}"/>  <color class="color-red" ng-show="s.isopen == '0'" style="font-size:12px;">店铺暂停营业</color> </p>
             <p class="notice" >通告：{{s.shopnotice}}</p>
           </div>
         </div>

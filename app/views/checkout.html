@@ -78,8 +78,8 @@
         </div>
         <div class="panel-collapse" bs-collapse-target>
           <div class="panel-body item-container">
-            <ul class="list-group">
-              <li class="list-group-item row" ng-repeat="b in bags" ng-click="choseBag(b);">
+            <ul class="list-group" >
+              <li class="list-group-item row"  ng-repeat="b in bags" ng-click="choseBag(b);" ng-if="shop.shopid !== '114'&&shop.shopid !== '115'&&shop.shopid !== '15'&&shop.shopid !== '116'&&shop.shopid !== '117'&&shop.shopid !== '119'&&shop.shopid !== '120'&&shop.shopid !== '121'&&shop.shopid !== '122'&&shop.shopid !== '123'">
                 <div class="col-xs-7" ng-if="b.type==1">{{b.amount}}元外送优惠券</div>
                 <div class="col-xs-7" ng-if="b.type==2">{{b.amount}}元自提优惠券</div>
                 <div class="col-xs-4">{{b | leftDays}}</div>
@@ -88,6 +88,18 @@
                     <i class="fa fa-circle-thin" ng-if="b.id!=selectedBag.id"></i>
                     <i class="fa fa-check-circle" ng-if="b.id==selectedBag.id"></i>
                   </div>
+                </div>
+              </li>
+              <li class="list-group-item row"   ng-repeat="b in bags" ng-click="choseBag(b);" ng-if="shop.shopid === '114'||shop.shopid === '15'&&b.amount==2||shop.shopid === '115'||shop.shopid === '116'||shop.shopid === '117'||shop.shopid === '119'||shop.shopid === '120'||shop.shopid === '121'||shop.shopid === '122'||shop.shopid === '123'">
+                <div >
+                  <div class="col-xs-7" ng-if="b.type==1">{{b.amount}}元外送优惠券</div>
+
+                  <div class="col-xs-4">{{b | leftDays}}</div>
+                  <div class="col-xs-1 text-right">
+                    <div class="icon right">
+                      <i class="fa fa-circle-thin" ng-if="b.id!=selectedBag.id"></i>
+
+                    </div></div>
                 </div>
               </li>
             </ul>
