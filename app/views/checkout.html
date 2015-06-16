@@ -10,15 +10,8 @@
   </p>
 
   <div ng-show="!loading" class="main">
-    <span class="delivery-title">选择送货方式：</span>
 
-    <div class="btn-group delivery-chose" role="group" ng-if="shop.shopid !== '114'&&shop.shopid !== '115'&&shop.shopid !== '116'&&shop.shopid !== '117'&&shop.shopid !== '119'&&shop.shopid !== '120'&&shop.shopid !== '121'&&shop.shopid !== '122'&&shop.shopid !== '123'">
-      <a href="javascript:;" class="btn btn-default btn-sm" ng-class="{'btn-warning': ispickup==1}"
-         ng-click="choseDelivery(1);" role="button">到店自提</a>
-      <a href="javascript:;" class="btn btn-default btn-sm" ng-class="{'btn-warning': ispickup==0}"
-         ng-click="choseDelivery(0);" role="button">送货上门</a>
-    </div>
-    <div class="btn-group delivery-chose" role="group" ng-if="shop.shopid === '114'||shop.shopid === '115'||shop.shopid === '116'||shop.shopid === '117'||shop.shopid === '119'||shop.shopid === '120'||shop.shopid === '121'||shop.shopid === '122'||shop.shopid === '123'">
+    <div class="btn-group delivery-chose" role="group" >
       <br />
     </div>
     <div class="address-container container-fluid" ui-sref="shuwo.address.list" ng-show="ispickup==0">
@@ -59,6 +52,19 @@
             <p class="color-red" ng-if="i.attribute=='2' || i.attribute=='3'">{{i.price | number:2}}元</p>
           </div>
         </li>
+        <li class="list-group-item row"  ng-show="shop.shopid == '123'">
+          <div class="col-xs-4">
+            <p class="name">打包盒</p>
+          </div>
+          <div class="col-xs-4">
+
+          </div>
+          <div class="col-xs-4">
+
+
+            <p class="color-red" >1元</p>
+          </div>
+        </li>
       </ul>
     </div>
     <div class="panel-group bag-group" bs-collapse ng-model="o" ng-show="bags.length>0&&shop.isbag==1">
@@ -79,7 +85,7 @@
         <div class="panel-collapse" bs-collapse-target>
           <div class="panel-body item-container">
             <ul class="list-group" >
-              <li class="list-group-item row"  ng-repeat="b in bags" ng-click="choseBag(b);" ng-if="shop.shopid !== '114'&&shop.shopid !== '115'&&shop.shopid !== '15'&&shop.shopid !== '116'&&shop.shopid !== '117'&&shop.shopid !== '119'&&shop.shopid !== '120'&&shop.shopid !== '121'&&shop.shopid !== '122'&&shop.shopid !== '123'">
+              <li class="list-group-item row"  ng-repeat="b in bags" ng-click="choseBag(b);" ng-if="shop.shopid !== '114'&&shop.shopid !== '115'&&shop.shopid !== '116'&&shop.shopid !== '117'&&shop.shopid !== '119'&&shop.shopid !== '120'&&shop.shopid !== '121'&&shop.shopid !== '122'&&shop.shopid !== '123'">
                 <div class="col-xs-7" ng-if="b.type==1">{{b.amount}}元外送优惠券</div>
                 <div class="col-xs-7" ng-if="b.type==2">{{b.amount}}元自提优惠券</div>
                 <div class="col-xs-4">{{b | leftDays}}</div>
@@ -90,7 +96,7 @@
                   </div>
                 </div>
               </li>
-              <li class="list-group-item row"   ng-repeat="b in bags" ng-click="choseBag(b);" ng-if="shop.shopid === '114'||shop.shopid === '15'&&b.amount==2||shop.shopid === '115'||shop.shopid === '116'||shop.shopid === '117'||shop.shopid === '119'||shop.shopid === '120'||shop.shopid === '121'||shop.shopid === '122'||shop.shopid === '123'">
+              <li class="list-group-item row"   ng-repeat="b in bags" ng-click="choseBag(b);" ng-if="shop.shopid === '114'&&b.amount==2||shop.shopid === '115'&&b.amount==2||shop.shopid === '116'&&b.amount==2||shop.shopid === '117'&&b.amount==2||shop.shopid === '119'||shop.shopid === '120'&&b.amount==2||shop.shopid === '121'&&b.amount==2||shop.shopid === '122'&&b.amount==2||shop.shopid === '123'&&b.amount==2">
                 <div >
                   <div class="col-xs-7" ng-if="b.type==1">{{b.amount}}元外送优惠券</div>
 
@@ -143,7 +149,7 @@
           </div>
         </div>
       </div>
-      <p class="daigoutishi"><i class="fa fa-leaf color-green"></i>买零食、买水、买烟，想买什么我们帮你带（代购费<color class="color-red" style="text-decoration: line-through;">3</color>元,<color class="color-red">0</color>元,活动期间免费为您跑腿，无需打赏）</p>
+      <p class="daigoutishi"><i class="fa fa-leaf color-green"></i>买零食、买水、买烟，想买什么我们帮你带（代购费原价<color class="color-red" >3</color>元,现价<color class="color-red">0</color>元,活动期间免费为您跑腿，无需打赏）</p>
       <div class="container-fluid notes-container">
         <textarea class="form-control" cols="30" rows="3" placeholder="在这里输入您需要代购的物品哟~" ng-model="notes" ng-show="agree" ></textarea>
       </div>
@@ -152,7 +158,7 @@
   <div class="cart-footer">
     <div class="row">
       <div class="col-xs-8">
-        <p class="total">价格约：<span class="color-red">{{totalPrice() | price}}元</span><span class="small color-red" ng-if="selectedBag">（-{{selectedBag.amount}}元优惠券）</span></p>
+        <p class="total">价格约：<span class="color-red" ng-if="shop.shopid == '123'">{{totalPrice()*1 + 1 | price }}元</span><span class="color-red" ng-if="shop.shopid !== '123'">{{totalPrice() | price}}元</span><span class="small color-red" ng-if="selectedBag">（-{{selectedBag.amount}}元优惠券）</span></p>
       </div>
       <div class="col-xs-4 text-right" ng-show="!submitting">
         <button class="btn btn-block btn-lg btn-success" ng-click="submit();">提交订单</button>

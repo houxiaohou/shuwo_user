@@ -17,7 +17,8 @@ angular
     'mgcrea.ngStrap.collapse',
     'LocalStorageModule',
     'infinite-scroll',
-    'services.config'
+    'services.config',
+    'angular-flexslider'
   ])
   .config(['$urlRouterProvider', '$stateProvider', '$httpProvider', 'localStorageServiceProvider', 'configuration',
     function ($urlRouterProvider, $stateProvider, $httpProvider, localStorageServiceProvider, configuration) {

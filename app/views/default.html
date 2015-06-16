@@ -6,15 +6,17 @@
   </a>
 
   <div class="default-banner" >
-    <a href="#/allnotice" ng-if="shops[0].shopid !== '114'&&shops[0].shopid !== '115'&&shops[0].shopid !== '116'&&shops[0].shopid !== '117'&&shops[0].shopid !== '119'&&shops[0].shopid !== '120'&&shops[0].shopid !== '121'&&shops[0].shopid !== '122'&&shops[0].shopid !== '123'"><img ng-src="{{banner}}" alt="" width="100%"/></a>
 
-    <a  ng-if="shops[0].shopid === '114'||shops[0].shopid === '115'||shops[0].shopid === '116'||shops[0].shopid === '117'||shops[0].shopid === '119'||shops[0].shopid === '120'||shops[0].shopid === '121'||shops[0].shopid === '122'||shops[0].shopid === '123'"><img ng-src="{{banner1}}" alt="" width="100%"/></a>
-    <a  href="#/shop/114" ng-if="shops[0].shopid === '114'||shops[0].shopid === '115'||shops[0].shopid === '116'||shops[0].shopid === '117'||shops[0].shopid === '119'||shops[0].shopid === '120'||shops[0].shopid === '121'||shops[0].shopid === '122'||shops[0].shopid === '123'"><img ng-src="{{banner2}}" alt="" width="100%" style="margin:1px 0 0 0;"/></a>
+    <flex-slider slide="s in mySlides" data-control-nav="false" data-direction-nav="false" data-slideshow-speed="3000">
 
+      <li><a href=""><img ng-src="{{banner1}}" alt="" width="100%"/></a></li>
+      <li><a href="#/shop/114"><img ng-src="{{banner2}}" alt="" width="100%"/></a></li>
+
+    </flex-slider>
   </div>
 
   <div class="default-list" style="margin:2px 0 0 0;">
-    <p class="title" ng-if="shops[0].shopid !== '114'&&shops[0].shopid !== '115'&&shops[0].shopid !== '116'&&shops[0].shopid !== '117'&&shops[0].shopid !== '119'&&shops[0].shopid !== '120'&&shops[0].shopid !== '121'&&shops[0].shopid !== '122'&&shops[0].shopid !== '123'">附近的水果店（点击水果店购买）</p>
+
 
     <p class="text-center" ng-show="shopLoading">
       <i class="fa fa-spinner fa-spin"></i>
@@ -36,9 +38,10 @@
       </a>
     </ul>
     <div ng-show="shops.length==0&&!shopLoading">
-      <p class="text-center">附近还没有水果店</p>
+      <p class="text-center">附近还没有商铺</p>
     </div>
-    <p class="default-tip" ng-if="shops[0].shopid !== '114'&&shops[0].shopid !== '115'&&shops[0].shopid !== '116'&&shops[0].shopid !== '117'&&shops[0].shopid !== '119'&&shops[0].shopid !== '120'&&shops[0].shopid !== '121'&&shops[0].shopid !== '122'&&shops[0].shopid !== '123'"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;树窝水果精挑细选您身边的优质水果店，下单后货到付款，水果当面验收，让您足不出户享受健康生活.</p>
-    <p class="default-tip" ng-if="shops[0].shopid === '114'||shops[0].shopid === '115'||shops[0].shopid === '116'||shops[0].shopid === '117'||shops[0].shopid === '119'||shops[0].shopid === '120'||shops[0].shopid === '121'||shops[0].shopid === '122'||shops[0].shopid === '123'"><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;树窝水果精挑细选您身边的优质店铺，下单后货到付款，物品当面验收。不想出门？我们送！</p>
+
+    <p class="default-tip" ><i class="fa fa-leaf color-green"></i>&nbsp;&nbsp;树窝精挑细选您身边的优质店铺，下单后货到付款，物品当面验收。不想出门？我们送！</p>
   </div>
 </div>
+

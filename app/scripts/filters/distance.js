@@ -28,8 +28,15 @@ angular.module('shuwoApp')
         }
         return distance + 'km';
       }
-      if (input > 2000) {
-        return '>2km';
+      if (input <= 3000&&input > 2000) {
+        var distance = new Number(input / 1000).toFixed(2);
+        if (distance == 2) {
+          return '2km';
+        }
+        return distance + 'km';
+      }
+      if (input > 3000) {
+        return '>3km';
       }
       return 'distance filter: ' + input;
     };

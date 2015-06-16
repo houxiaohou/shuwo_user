@@ -16,7 +16,10 @@ angular.module('shuwoApp')
       $scope.banner = configuration.imagePath + 'new-banner.jpg';
       $scope.banner1 = configuration.imagePath + 'jiu-banner.png';
       $scope.discountimg = configuration.imagePath + 'quan.png';
-      $scope.banner2 = configuration.imagePath + 'jiu-banner1.jpg';
+      $scope.banner2 = configuration.imagePath + 'jiu-banner1.png';
+
+      $scope.mySlides = [1];
+
       $scope.locationLoading = true;
       $scope.$watch(function () {
         return location.getStoredLocation();
@@ -32,7 +35,7 @@ angular.module('shuwoApp')
       // location变化的话重新获取店铺
       $scope.$watch('location', function (newVal, oldVal) {
         if (newVal !== undefined) {
-          shop.listShopsNearBy(0, 9).success(function (data) {
+          shop.listShopsNearBy(0, 20).success(function (data) {
             $scope.shops = data;
             for (var i in $scope.shops) {
               if ($scope.shops[i]['notice'].length > 28) {

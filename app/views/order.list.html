@@ -23,8 +23,8 @@
         </div>
         <div class="row text-center price">
           <div class="col-xs-12">
-            <p ng-if="o.notes.length>0">订单金额：<span class="color-red"><span ng-if="o.orderstatus==0">约</span>￥{{o.price*1 }}<span class="color-red text-small" ng-show="o.isfirst == 1 || o.discount>0"> (已优惠{{o.discount}}元)</span></span><span class="color-grey text-small">（共{{o.productdetail.length}}种商品）</span></p>
-            <p ng-if="!o.notes.length>0">订单金额：<span class="color-red"><span ng-if="o.orderstatus==0">约</span>￥{{o.price }}<span class="color-red text-small" ng-show="o.isfirst == 1 || o.discount>0"> (已优惠{{o.discount}}元)</span></span><span class="color-grey text-small">（共{{o.productdetail.length}}种商品）</span></p>
+            <p ng-if="o.shopid == '123'">订单金额：<span class="color-red"><span ng-if="o.orderstatus==0">约</span>￥{{o.price*1 +1 }}<span class="color-red text-small" ng-show="o.isfirst == 1 || o.discount>0"> (已优惠{{o.discount}}元)</span></span><span class="color-grey text-small">（共{{o.productdetail.length}}种商品）</span></p>
+            <p ng-if="o.shopid !== '123'">订单金额：<span class="color-red"><span ng-if="o.orderstatus==0">约</span>￥{{o.price }}<span class="color-red text-small" ng-show="o.isfirst == 1 || o.discount>0"> (已优惠{{o.discount}}元)</span></span><span class="color-grey text-small">（共{{o.productdetail.length}}种商品）</span></p>
           </div>
         </div>
         <div class="panel-group" bs-collapse ng-model="o.open">
@@ -35,7 +35,7 @@
                   <span ng-if="o.open==0">点击关闭商品列表 <i class="fa fa-angle-double-up"></i></span>
                 </p>
             </div>
-            <div class="panel-collapse" bs-collapse-target>
+            <div class="panel-collapse" bs-collapse-target ng-repeat="o in orders">
               <div class="panel-body item-container">
                 <ul class="list-group">
                   <li class="list-group-item row" ng-repeat="i in o.productdetail">
@@ -52,6 +52,19 @@
                       <p class="color-red" ng-if="i.attribute==2||i.attribute==3">￥{{i.realprice}}</p>
                       <p class="color-red" ng-if="i.attribute==1&&o.orderstatus=='0'">约￥{{i.realprice}}</p>
                       <p class="color-red" ng-if="i.attribute==1&&(o.orderstatus=='1'||o.orderstatus=='3')">￥{{i.realprice}}</p>
+                    </div>
+                  </li>
+                  <li class="list-group-item row" ng-show="o.shopid == '123'" >
+                    <div class="col-xs-4 text-center">
+                      <p class="name">打包盒</p>
+                    </div>
+                    <div class="col-xs-4 text-center">
+
+                    </div>
+                    <div class="col-xs-4 text-center">
+
+
+                      <p class="color-red" >1元</p>
                     </div>
                   </li>
                   <li class="list-group-item row" ng-if="o.notes.length>0" >
